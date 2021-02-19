@@ -14,13 +14,13 @@ public class ServerClientAuthorizationThread extends Thread {
     public BufferedReader in;
     public BufferedWriter out;
     private DbHandler dbHandler = DbHandler.getInstance();
-    ;
+    private String login;
 
     ServerClientAuthorizationThread(Socket inSocket) {
         socket = inSocket;
     }
 
-    private void pars(String word) throws ParseException {
+    private void pars(String word) throws ParseException, InterruptedException {
         Object obj = new JSONParser().parse(word);
         JSONObject json = (JSONObject) obj;
         if (((String) json.get("globalType")).equals("connection")) {
@@ -34,12 +34,21 @@ public class ServerClientAuthorizationThread extends Thread {
 
 
             }
+        }else{
+            if (((String) json.get("globalType")).equals("lobby")){
+                Server.startClientLobbyThread(socket,json);
+                throw new InterruptedException();
+            }
+
         }
 
     }
 
     private void chekAuthorization(JSONObject json) {
-        if (dbHandler.checkUser((String) json.get("login"), (String) json.get("password"))) {
+        String mLogin=(String) json.get("login");
+        String mPassword=(String) json.get("password");
+        if (dbHandler.checkUser(mLogin,mPassword)) {
+            login=mLogin;
             sendCallbackAuthorization(true);
 
         } else {
@@ -60,7 +69,9 @@ public class ServerClientAuthorizationThread extends Thread {
     }
 
     private void registration(JSONObject json) {
-        if (dbHandler.addUser((String) json.get("login"), (String) json.get("password"))) {
+        String mLogin=(String) json.get("login");
+        String mPassword=(String) json.get("password");
+        if (dbHandler.addUser(mLogin, mPassword)) {
             sendCallbackRegistration(true);
         } else {
             sendCallbackRegistration(false);
@@ -92,7 +103,7 @@ public class ServerClientAuthorizationThread extends Thread {
 
 
                 } catch (ParseException e) {
-                    System.out.println(e);
+
                 }
             }
             in.close();
