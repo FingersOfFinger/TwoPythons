@@ -2,7 +2,7 @@ package com.SFU;
 
 import java.io.*;
 import java.net.Socket;
-import java.sql.SQLException;
+
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,10 +13,13 @@ public class ServerClientAuthorizationThread extends Thread {
     public Socket socket;
     public BufferedReader in;
     public BufferedWriter out;
-    private DbHandler dbHandler = DbHandler.getInstance();;
+    private DbHandler dbHandler = DbHandler.getInstance();
+    ;
+
     ServerClientAuthorizationThread(Socket inSocket) {
         socket = inSocket;
     }
+
     private void pars(String word) throws ParseException {
         Object obj = new JSONParser().parse(word);
         JSONObject json = (JSONObject) obj;
@@ -24,12 +27,18 @@ public class ServerClientAuthorizationThread extends Thread {
             switch ((String) json.get("type")) {
                 case ("authorization"):
                     chekAuthorization(json);
+                    break;
+                case ("registration"):
+                    registration(json);
+                    break;
+
 
             }
         }
 
     }
-    private void chekAuthorization(JSONObject json){
+
+    private void chekAuthorization(JSONObject json) {
         if (dbHandler.checkUser((String) json.get("login"), (String) json.get("password"))) {
             sendCallbackAuthorization(true);
 
@@ -37,24 +46,38 @@ public class ServerClientAuthorizationThread extends Thread {
             sendCallbackAuthorization(false);
         }
     }
-    public void sendCallbackAuthorization(boolean access){
-        if(access){
-            try {
-                out.write("{\"globalType\":\"connection\",\"type\":\" autorization\",\"access\":\"true\"}");
-                out.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
-            try {
-                out.write("{\"globalType\":\"connection\",\"type\":\" autorization\",\"access\":\"false\"}");
-                out.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
+    private void sendCallbackAuthorization(boolean access) {
+
+        try {
+            out.write("{\"globalType\":\"connection\",\"type\":\" authorization\",\"access\":\"" + Boolean.toString(access) + "\"}");
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
     }
+
+    private void registration(JSONObject json) {
+        if (dbHandler.addUser((String) json.get("login"), (String) json.get("password"))) {
+            sendCallbackRegistration(true);
+        } else {
+            sendCallbackRegistration(false);
+        }
+
+    }
+
+    private void sendCallbackRegistration(boolean access) {
+        try {
+            out.write("{\"globalType\":\"connection\",\"type\":\"registration\",\"access\":\"" + Boolean.toString(access) + "\"}");
+            out.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void run() {
 
         try {

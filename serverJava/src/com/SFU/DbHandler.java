@@ -5,14 +5,13 @@ import java.sql.*;
 import org.sqlite.JDBC;
 
 
-
 public class DbHandler {
     private static final String CON_STR = "jdbc:sqlite:resources/users.db";
 
 
     private static DbHandler instance = null;
 
-    public static synchronized DbHandler getInstance()  {
+    public static synchronized DbHandler getInstance() {
         if (instance == null) {
             try {
                 instance = new DbHandler();
@@ -35,12 +34,11 @@ public class DbHandler {
     }
 
     public boolean checkUser(String login, String password) {
-        System.out.println("checkUser");
         try (Statement statement = this.connection.createStatement()) {
 
-            ResultSet resultSet = statement.executeQuery("SELECT id,login,password FROM users WHERE login=\""+login+"\" AND password=\""+password+"\"");
+            ResultSet resultSet = statement.executeQuery("SELECT id,login,password FROM users WHERE login=\"" + login + "\" AND password=\"" + password + "\"");
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return true;
             }
             return false;
@@ -49,5 +47,40 @@ public class DbHandler {
             e.printStackTrace();
             return false;
         }
+    }
+
+    private boolean checkLogin(String login) {
+        try (Statement statement = this.connection.createStatement()) {
+
+            ResultSet resultSet = statement.executeQuery("SELECT id,login,password FROM users WHERE login=\"" + login + "\"");
+
+            if (resultSet.next()) {
+                return true;
+            }
+            return false;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public boolean addUser(String login, String password) {
+        if (!checkLogin(login)) {
+            try (PreparedStatement statement = this.connection.prepareStatement(
+                    "INSERT INTO users(`login`, `password`) " +
+                            "VALUES(?, ?)")) {
+                statement.setObject(1, login);
+                statement.setObject(2, password);
+                statement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            return false;
+        }
+        return true;
     }
 }

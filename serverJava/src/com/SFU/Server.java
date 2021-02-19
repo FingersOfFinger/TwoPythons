@@ -13,7 +13,7 @@ public class Server {
     }
     public void start() {
         try {
-            ServerSocket server = new ServerSocket(81);
+            ServerSocket server = new ServerSocket(82);
 
             System.out.println("Server Started....");
             while (true) {
