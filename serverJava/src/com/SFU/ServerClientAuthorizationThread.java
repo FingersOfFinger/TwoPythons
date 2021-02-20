@@ -44,8 +44,13 @@ public class ServerClientAuthorizationThread extends Thread {
     private void chekAuthorization(JSONObject json) throws IOException {
         String mLogin = (String) json.get("login");
         String mPassword = (String) json.get("password");
+        if (Server.usersOnline.contains(mLogin)) {
+            SendCallBack.sendCallbackAuthorization(false, socket);
+            return;
+        }
         if (dbHandler.checkUser(mLogin, mPassword)) {
             login = mLogin;
+            Server.usersOnline.add(login);
             SendCallBack.sendCallbackAuthorization(true, socket);
 
         } else {
@@ -77,16 +82,18 @@ public class ServerClientAuthorizationThread extends Thread {
                 try {
                     pars(word);
 
-                } catch (ParseException|IOException e) {
+                } catch (ParseException | IOException e) {
 
                 }
             }
 
 
         } catch (Exception e) {
+            Server.usersOnline.remove(login);
             System.out.println(e);
 
         } finally {
+
 
         }
     }

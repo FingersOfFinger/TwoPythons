@@ -64,9 +64,11 @@ public class ServerClientLobbyThread extends Thread{
                 }
             }
         } catch (Exception e) {
+            Server.usersOnline.remove(login);
             System.out.println(e);
 
         } finally {
+
 
         }
     }
