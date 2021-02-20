@@ -30,10 +30,19 @@ public class ServerClientLobbyThread extends Thread{
         }
 
     }
+    public long getHash(String s) {
+        long l = 0;
+        for (int i = 0; i < s.length(); i++)
+            l = l * 127 + s.charAt(i);
+        return l & Long.MAX_VALUE;
+    }
     private void createLobby(JSONObject json) throws IOException {
         Lobby lobby=new Lobby();
-        lobby.setName((String)json.get("name"));
-        lobby.setId(Server.allLobby.size()+1);
+        String name=(String)json.get("name");
+        lobby.setName(name);
+        String socketPort=String.valueOf(Server.getPort(socket.getRemoteSocketAddress()));
+        lobby.setId(getHash(String.valueOf(Server.allLobby.size()+1)+name+socketPort+(String)json.get("owner")));
+        System.out.println(getHash(String.valueOf(Server.allLobby.size()+1)+name+socketPort+(String)json.get("owner")));
         lobby.setOwner((String)json.get("owner"));
         lobby.setIdPreparation(Server.getPort(socket.getRemoteSocketAddress()));
         Server.allLobby.add(lobby);

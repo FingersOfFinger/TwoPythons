@@ -3,14 +3,14 @@ package com.SFU;
 import java.util.Vector;
 
 public class Lobby {
-    public int id;
+    public long id;
     public String name;
     public String owner;
     public Vector<Integer>idPreparation=new Vector<Integer>();
     public Vector<Integer>idReady=new Vector<Integer>();
 
 
-    public void setId(int inId){
+    public void setId(long inId){
         id=inId;
     }
     public void setName(String inName){
