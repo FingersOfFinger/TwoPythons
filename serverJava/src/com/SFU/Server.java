@@ -14,6 +14,8 @@ public class Server {
     public static HashMap<Integer,Socket> mapSockets=new HashMap<>();
     public static Vector<Lobby>allLobby=new Vector<>();
     public static Vector<String> usersOnline= new Vector<>();
+    public static HashMap<Integer,String>mapLoginsOnline=new HashMap<>();
+
     public static int getPort(SocketAddress address){
         return ((InetSocketAddress) address).getPort();
     }

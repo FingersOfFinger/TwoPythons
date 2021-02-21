@@ -11,9 +11,8 @@ import java.util.Vector;
 public class ServerClientLobbyThread extends Thread{
     public Socket socket;
     public BufferedReader in;
-    public BufferedWriter out;
     private String login;
-    private JSONObject json;
+    private final JSONObject json;
     ServerClientLobbyThread(Socket inSocket,JSONObject inJson){socket=inSocket;json=inJson;}
     private void pars(String word) throws ParseException, IOException {
 
@@ -103,13 +102,13 @@ public class ServerClientLobbyThread extends Thread{
             System.out.println(Sockets.get(1));
             LobbyManager.deleteLobbyNoLogin(id);
             //старт игры
-            return;
+
         }
 
     }
     public void run() {
         try {
-            String word = "";
+            String word;
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pars(json.toString());
             while (!this.isInterrupted()) {
@@ -123,7 +122,7 @@ public class ServerClientLobbyThread extends Thread{
             }
         } catch (Exception e) {
             Server.usersOnline.remove(login);
-            System.out.println(e);
+            System.out.println();
 
         } finally {
 

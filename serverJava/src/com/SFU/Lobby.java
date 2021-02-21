@@ -10,6 +10,7 @@ public class Lobby {
     public Vector<Integer>idReady=new Vector<Integer>();
 
 
+
     public void setId(long inId){
         id=inId;
     }

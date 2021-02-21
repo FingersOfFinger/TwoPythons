@@ -44,12 +44,14 @@ public class ServerClientAuthorizationThread extends Thread {
     private void chekAuthorization(JSONObject json) throws IOException {
         String mLogin = (String) json.get("login");
         String mPassword = (String) json.get("password");
+
         if (Server.usersOnline.contains(mLogin)) {
             SendCallBack.sendCallbackAuthorization(false, socket);
             return;
         }
         if (dbHandler.checkUser(mLogin, mPassword)) {
             login = mLogin;
+            Server.mapLoginsOnline.put(Server.getPort(socket.getRemoteSocketAddress()),login);
             Server.usersOnline.add(login);
             SendCallBack.sendCallbackAuthorization(true, socket);
 
