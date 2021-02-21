@@ -22,14 +22,13 @@ public class DbHandler {
         return instance;
     }
 
-    // Объект, в котором будет храниться соединение с БД
+
     private Connection connection;
 
     private DbHandler() throws SQLException {
-        // Регистрируем драйвер, с которым будем работать
-        // в нашем случае Sqlite
+
         DriverManager.registerDriver(new JDBC());
-        // Выполняем подключение к базе данных
+
         this.connection = DriverManager.getConnection(CON_STR);
     }
 

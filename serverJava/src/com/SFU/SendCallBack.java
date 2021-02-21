@@ -38,4 +38,11 @@ public class SendCallBack {
         out.write("{\"globalType\":\"lobby\",\"type\":\"receiveGetLobby\",\"lobby\":[" + msg + "]}");
         out.flush();
     }
+    public static void sendCallbackDeleteLobby(boolean access,Socket socket) throws IOException {
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        out.write("{\"globalType\":\"lobby\",\"type\":\"receiveDeleteLobby\",\"access\":\"" + Boolean.toString(access) + "\"}");
+        out.flush();
+
+    }
+
 }

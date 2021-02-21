@@ -26,6 +26,9 @@ public class ServerClientLobbyThread extends Thread{
                 case("getLobby"):
                     getLobby();
                     break;
+                case("deleteLobby"):
+                    deleteLobby(Long.parseLong((String) json.get("id")),(String)json.get("login"));
+                    break;
             }
         }
 
@@ -51,6 +54,14 @@ public class ServerClientLobbyThread extends Thread{
     }
     private void getLobby() throws IOException {
         SendCallBack.sendCallbackGetLobby(socket);
+
+    }
+    private void deleteLobby(Long id,String login) throws IOException {
+        if(LobbyManager.deleteLobby(id,login)){
+            SendCallBack.sendCallbackDeleteLobby(true,socket);
+        }else{
+            SendCallBack.sendCallbackDeleteLobby(false,socket);
+        }
 
     }
     public void run() {
