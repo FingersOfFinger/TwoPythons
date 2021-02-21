@@ -6,6 +6,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Vector;
 
 public class ServerClientLobbyThread extends Thread{
     public Socket socket;
@@ -31,8 +32,14 @@ public class ServerClientLobbyThread extends Thread{
                     break;
                 case("enterLobby"):
                     enterLobby(Long.parseLong((String) json.get("id")));
+                    break;
                 case("exitLobby"):
                     exitLobby(Long.parseLong((String) json.get("id")));
+                    break;
+                case ("startGame"):
+                    startGame(Long.parseLong((String) json.get("id")));
+                    break;
+
             }
         }
 
@@ -80,6 +87,23 @@ public class ServerClientLobbyThread extends Thread{
             SendCallBack.sendCallbackExitLobby(true,socket);
         }else{
             SendCallBack.sendCallbackExitLobby(false,socket);
+        }
+
+    }
+    private void startGame(Long id){
+        LobbyManager.enterLobbyReady(id,Server.getPort(socket.getRemoteSocketAddress()));
+        System.out.println(LobbyManager.checkStartLobby(id));
+        if(LobbyManager.checkStartLobby(id)){
+            Socket socket1;
+            Socket socket2;
+            Vector<Integer> Sockets=LobbyManager.getSockets(id);
+            socket1=Server.mapSockets.get(Sockets.get(0));
+            socket2=Server.mapSockets.get(Sockets.get(1));
+            System.out.println(Sockets.get(0));
+            System.out.println(Sockets.get(1));
+            LobbyManager.deleteLobbyNoLogin(id);
+            //старт игры
+            return;
         }
 
     }
