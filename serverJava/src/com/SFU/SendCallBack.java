@@ -50,5 +50,11 @@ public class SendCallBack {
         out.flush();
 
     }
+    public static void sendCallbackExitLobby(boolean access,Socket socket) throws IOException {
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        out.write("{\"globalType\":\"lobby\",\"type\":\"\"receiveExitLobby\",\"access\":\"" + Boolean.toString(access) + "\"}");
+        out.flush();
+
+    }
 
 }
