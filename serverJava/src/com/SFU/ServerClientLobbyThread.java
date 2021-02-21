@@ -23,9 +23,9 @@ public class ServerClientLobbyThread extends Thread{
                 case ("createLobby"):
                     createLobby(json);
                     break;
-
-
-
+                case("getLobby"):
+                    getLobby();
+                    break;
             }
         }
 
@@ -45,8 +45,12 @@ public class ServerClientLobbyThread extends Thread{
         System.out.println(getHash(String.valueOf(Server.allLobby.size()+1)+name+socketPort+(String)json.get("owner")));
         lobby.setOwner((String)json.get("owner"));
         lobby.setIdPreparation(Server.getPort(socket.getRemoteSocketAddress()));
-        Server.allLobby.add(lobby);
+        LobbyManager.addLobby(lobby);
         SendCallBack.sendCallbackCreateLobby(true,socket);
+
+    }
+    private void getLobby() throws IOException {
+        SendCallBack.sendCallbackGetLobby(socket);
 
     }
     public void run() {
