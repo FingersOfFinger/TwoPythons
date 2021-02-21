@@ -1,6 +1,7 @@
 package com.SFU;
 
 import java.sql.*;
+import java.util.Vector;
 
 import org.sqlite.JDBC;
 
@@ -47,6 +48,34 @@ public class DbHandler {
             return false;
         }
     }
+
+    public Vector<Statistic> getStatGame(String login) {
+        Vector<Statistic>statistics=new Vector<>();
+        try (Statement statement = this.connection.createStatement()) {
+
+            ResultSet resultSet = statement.executeQuery("SELECT loser,winner,scoreWinner,scoreLoser FROM statistics WHERE winner=\"" + login + "\"");
+
+            while (resultSet.next()) {
+                statistics.add(new Statistic(resultSet.getString("loser"),resultSet.getString("winner"),resultSet.getInt("scoreWinner")));
+
+            }
+            ResultSet resultSet2 = statement.executeQuery("SELECT loser,winner,scoreWinner,scoreLoser FROM statistics WHERE loser=\"" + login + "\"");
+            while (resultSet2.next()) {
+                statistics.add(new Statistic(resultSet.getString("loser"),resultSet.getString("winner"),resultSet.getInt("scoreLoser")));
+
+            }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return statistics;
+    }
+
+
+
 
     private boolean checkLogin(String login) {
         try (Statement statement = this.connection.createStatement()) {

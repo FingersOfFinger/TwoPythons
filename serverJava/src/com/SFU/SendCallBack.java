@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.Vector;
 
 public class SendCallBack {
     private static BufferedWriter out;
@@ -55,6 +56,18 @@ public class SendCallBack {
         out.write("{\"globalType\":\"lobby\",\"type\":\"\"receiveExitLobby\",\"access\":\"" + Boolean.toString(access) + "\"}");
         out.flush();
 
+    }
+    public static void sendCallbackStatGames(Vector<Statistic>statistics,Socket socket) throws IOException {
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        String msg = "";
+        for (int i = 0; i < statistics.size(); i++) {
+            msg += "{\"winner\":\"" + statistics.get(i).winner+ "\",\"loser\":\"" +  statistics.get(i).loser + "\",\"score\":\"" + String.valueOf( statistics.get(i).score) + "\"},";
+        }
+        if (msg.length() > 0) {
+            msg = msg.substring(0, msg.length() - 1);
+        }
+        out.write("{\"globalType\":\"lobby\",\"type\":\"receiveStatGame\",\"userScore\":[" + msg + "]}");
+        out.flush();
     }
 
 }

@@ -21,7 +21,7 @@ public class Server {
     }
     public void start() {
         try {
-            ServerSocket server = new ServerSocket(83);
+            ServerSocket server = new ServerSocket(84);
 
             System.out.println("Server Started....");
             while (true) {

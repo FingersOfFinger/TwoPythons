@@ -13,6 +13,7 @@ public class ServerClientLobbyThread extends Thread{
     public BufferedReader in;
     private String login;
     private final JSONObject json;
+    private DbHandler dbHandler = DbHandler.getInstance();
     ServerClientLobbyThread(Socket inSocket,JSONObject inJson){socket=inSocket;json=inJson;}
     private void pars(String word) throws ParseException, IOException {
 
@@ -38,6 +39,9 @@ public class ServerClientLobbyThread extends Thread{
                 case ("startGame"):
                     startGame(Long.parseLong((String) json.get("id")));
                     break;
+                case("getStatGame"):
+                    getStatGame((String)json.get("login"));
+
 
             }
         }
@@ -105,6 +109,9 @@ public class ServerClientLobbyThread extends Thread{
 
         }
 
+    }
+    private void getStatGame(String login) throws IOException {
+        SendCallBack.sendCallbackStatGames(dbHandler.getStatGame(login),socket);
     }
     public void run() {
         try {
