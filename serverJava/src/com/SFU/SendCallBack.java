@@ -44,5 +44,11 @@ public class SendCallBack {
         out.flush();
 
     }
+    public static void sendCallbackEnterLobby(boolean access,Socket socket) throws IOException {
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        out.write("{\"globalType\":\"lobby\",\"type\":\"receiveEnterLobby\",\"access\":\"" + Boolean.toString(access) + "\"}");
+        out.flush();
+
+    }
 
 }

@@ -13,4 +13,14 @@ public class LobbyManager {
         }
         return false;
     }
+    public static boolean enterLobby(long idLobby,int idUser){
+        for(int i=0;i<Server.allLobby.size();i++){
+            if(Server.allLobby.get(i).id==idLobby && Server.allLobby.get(i).idPreparation.size()<2){
+                Server.allLobby.get(i).idPreparation.add(idUser);
+                return true;
+            }
+        }
+        return false;
+
+    }
 }
