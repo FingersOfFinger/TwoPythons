@@ -20,44 +20,33 @@ public class ServerClientGameThread extends Thread {
     private TimerTask timerTask;
 
     ServerClientGameThread(Socket inSocket) {
-        python=new Python();
+        python = new Python();
         socket = inSocket;
         python.setDirection("right");
-        Point p1=new Point(2,0);
-        Point p2=new Point(1,0);
-        Point p3=new Point(0,0);
-        python.setFirstDots(p1,p2,p3);
-        timer=new Timer();
+        Point p1 = new Point(2, 0);
+        Point p2 = new Point(1, 0);
+        Point p3 = new Point(0, 0);
+        python.setFirstDots(p1, p2, p3);
+        timer = new Timer();
     }
-    public static void stopTimer(){
+
+    public static void stopTimer() {
         timer.cancel();
     }
 
 
-
     public void run() {
+
         try {
-            PlayerGamesThread player=new PlayerGamesThread(socket,python);
+            PlayerGamesThread player = new PlayerGamesThread(socket, python);
             player.start();
-
-        }catch (Exception e){
-            timer.cancel();
-
-        }
+            timerTask = new MyTimerTask(socket);
+            timer.scheduleAtFixedRate(timerTask, 0, 500);
 
 
-        timerTask=new MyTimerTask(socket);
-        timer.scheduleAtFixedRate(timerTask,0,500);
-        try {
-
-            while (!this.isInterrupted()) {
-
-            }
         } catch (Exception e) {
             Server.usersOnline.remove(login);
             System.out.println(e);
-        } finally {
-            timer.cancel();
         }
     }
 }
