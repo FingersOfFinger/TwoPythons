@@ -14,11 +14,9 @@ import java.util.TimerTask;
 
 public class ServerClientGameThread extends Thread {
     public Socket socket;
-    public BufferedReader in;
     private String login;
-    private JSONObject json;
     public static Python python;
-    private Timer timer;
+    static Timer timer;
     private TimerTask timerTask;
 
     ServerClientGameThread(Socket inSocket) {
@@ -31,46 +29,35 @@ public class ServerClientGameThread extends Thread {
         python.setFirstDots(p1,p2,p3);
         timer=new Timer();
     }
-    private void pars(String word) throws ParseException, IOException{
-        Object obj = new JSONParser().parse(word);
-        JSONObject json = (JSONObject) obj;
-        if (((String) json.get("globalType")).equals("game")) {
-            switch ((String) json.get("type")) {
-                case("setDirectionPython"):
-                    python.setDirection((String) json.get("directionPython"));
-                    break;
-            }
-        }
-
+    public static void stopTimer(){
+        timer.cancel();
     }
 
+
+
     public void run() {
+        try {
+            PlayerGamesThread player=new PlayerGamesThread(socket,python);
+            player.start();
+
+        }catch (Exception e){
+            timer.cancel();
+
+        }
+
+
         timerTask=new MyTimerTask(socket);
         timer.scheduleAtFixedRate(timerTask,0,500);
         try {
-            String word = "";
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
             while (!this.isInterrupted()) {
-                word = in.readLine();
-                System.out.println(word);
-                try {
-                    pars(word);
-
-                } catch (ParseException | IOException e) {
-
-                }
 
             }
         } catch (Exception e) {
             Server.usersOnline.remove(login);
             System.out.println(e);
-
-
-
         } finally {
             timer.cancel();
-
-
         }
     }
 }
