@@ -30,6 +30,11 @@ public class ServerClientAuthorizationThread extends Thread {
                 case ("registration"):
                     registration(json);
                     break;
+                case("test"):
+                    ServerClientGameThread gameThread= new ServerClientGameThread(socket);
+                    gameThread.start();
+                    this.interrupt();
+                    break;
             }
         } else {
             if (((String) json.get("globalType")).equals("lobby")) {
@@ -74,12 +79,18 @@ public class ServerClientAuthorizationThread extends Thread {
 
     public void run() {
 
+
+
         try {
             String word = "";
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+
             while (!this.isInterrupted()) {
+                int c;
                 word = in.readLine();
+
+
                 System.out.println(word);
                 try {
                     pars(word);
@@ -87,6 +98,7 @@ public class ServerClientAuthorizationThread extends Thread {
                 } catch (ParseException | IOException e) {
 
                 }
+
             }
 
 

@@ -69,5 +69,18 @@ public class SendCallBack {
         out.write("{\"globalType\":\"lobby\",\"type\":\"receiveStatGame\",\"userScore\":[" + msg + "]}");
         out.flush();
     }
+    public static void sendCallbackSetDisplay(Python python,Socket socket) throws IOException { //тут в будущем будет много чего
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        String msg="";
+        for(int i=0;i<python.dots.size();i++){
+            msg+="{\"x\":\""+String.valueOf(python.dots.get(i).x)+"\",\"y\":\""+String.valueOf(python.dots.get(i).y)+"\"},";
+        }
+        if (msg.length() > 0) {
+            msg = msg.substring(0, msg.length() - 1);
+        }
+        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\",\"coordinatesPython1\":["+msg+"]}");
+        out.flush();
+
+    }
 
 }
