@@ -6,19 +6,23 @@ import java.util.TimerTask;
 
 public class MyTimerTask extends TimerTask {
     private Socket socket;
-    MyTimerTask(Socket inSocket){
-        socket=inSocket;
+    Python python;
+
+    MyTimerTask(Socket inSocket, Python inPython) {
+        socket = inSocket;
+        python = inPython;
 
 
     }
+
     @Override
     public void run() {
         try {
-            SendCallBack.sendCallbackSetDisplay(ServerClientGameThread.python,socket);
+            SendCallBack.sendCallbackSetDisplay(python, socket);
         } catch (IOException e) {
             e.printStackTrace();
         }
         //проверка в будущем
-        ServerClientGameThread.python.move();
+        python.move();
     }
 }

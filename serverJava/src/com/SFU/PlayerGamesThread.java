@@ -33,7 +33,7 @@ public class PlayerGamesThread extends Thread{
     public void run() {
 
         try {
-            String word = "";
+            String word;
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (!this.isInterrupted()) {
                 word = in.readLine();
@@ -47,10 +47,8 @@ public class PlayerGamesThread extends Thread{
 
             }
         } catch (Exception e) {
-            ServerClientGameThread.stopTimer();
+            ServerClientGameThread.stopTimer(Server.getPort(socket.getRemoteSocketAddress()));
             System.out.println(e);
-        } finally {
-
         }
     }
 }
