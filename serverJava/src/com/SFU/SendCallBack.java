@@ -1,5 +1,6 @@
 package com.SFU;
 
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -69,18 +70,24 @@ public class SendCallBack {
         out.write("{\"globalType\":\"lobby\",\"type\":\"receiveStatGame\",\"userScore\":[" + msg + "]}");
         out.flush();
     }
-    public static void sendCallbackSetDisplay(Python python,Socket socket) throws IOException { //тут в будущем будет много чего
+    public static void sendCallbackSetDisplay(Python python, Socket socket, Vector<Point>fruits) throws IOException { //тут в будущем будет много чего
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        String msg="";
+        StringBuilder msgPythonOne= new StringBuilder();
         for(int i=0;i<python.dots.size();i++){
-            msg+="{\"x\":\""+String.valueOf(python.dots.get(i).x)+"\",\"y\":\""+String.valueOf(python.dots.get(i).y)+"\"},";
+            msgPythonOne.append("{\"x\":\"").append(String.valueOf(python.dots.get(i).x)).append("\",\"y\":\"").append(String.valueOf(python.dots.get(i).y)).append("\"},");
         }
-        if (msg.length() > 0) {
-            msg = msg.substring(0, msg.length() - 1);
+        if (msgPythonOne.length() > 0) {
+            msgPythonOne = new StringBuilder(msgPythonOne.substring(0, msgPythonOne.length() - 1));
         }
-        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\",\"coordinatesPython1\":["+msg+"]}");
+        StringBuilder msgFruits= new StringBuilder();
+        for(int i=0;i<fruits.size();i++){
+            msgFruits.append("{\"x\":\"").append(String.valueOf(fruits.get(i).x)).append("\",\"y\":\"").append(String.valueOf(fruits.get(i).y)).append("\"},");
+        }
+        if (msgFruits.length() > 0) {
+            msgFruits = new StringBuilder(msgFruits.substring(0, msgFruits.length() - 1));
+        }
+        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\",\"coordinatesPython1\":["+msgPythonOne+"],\"coordinatesFruits\":["+msgFruits+"]}");
         out.flush();
-
     }
 
 }

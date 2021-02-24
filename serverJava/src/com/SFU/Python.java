@@ -16,21 +16,29 @@ public class Python {
     public void setDirection(String inDirection) {
         switch (inDirection) {
             case ("up"):
-                direction = Direction.up;
+                if (!direction.equals(Direction.down))
+                    direction = Direction.up;
                 break;
             case ("down"):
-                direction = Direction.down;
+                if (!direction.equals(Direction.up))
+                    direction = Direction.down;
                 break;
             case ("left"):
-                direction = Direction.left;
+                if (!direction.equals(Direction.right))
+                    direction = Direction.left;
                 break;
             case ("right"):
-                direction = Direction.right;
+                if (!direction.equals(Direction.left))
+                    direction = Direction.right;
                 break;
 
 
         }
 
+    }
+
+    public void height() {
+        dots.add(new Point(0, 0));
     }
 
     public void move() {

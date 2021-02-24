@@ -12,9 +12,11 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 
-public class ServerClientGameThread extends Thread {
-    private static HashMap<Integer,Timer>hashTimers=new HashMap<>();
+public class ServerClientGameThread<checkFruits> extends Thread {
+    public Vector<Point>fruits=new Vector<>();
+    private static final HashMap<Integer,Timer>hashTimers=new HashMap<>();
     public Socket socket;
     public Socket socketTwo;
     private String login;
@@ -40,18 +42,40 @@ public class ServerClientGameThread extends Thread {
 
     }
 
+    public static void generateFruits(Vector<Point>fruits){
+        int size=(int)(Math.random()*3)+1;
+
+        for(int i=0;i<size;i++){
+            fruits.add(new Point((int)(Math.random()*(15))+1,(int)(Math.random()*(15))+1));
+        }
+
+    }
+    public static void checkFruits(Vector<Point>fruits,Python python){
+        for(int i=0;i<fruits.size();i++){
+            if(python.dots.firstElement().equals(fruits.get(i))){
+                fruits.remove(python.dots.firstElement());
+                python.height();
+                break;
+            }
+        }
+        if(fruits.size()==0){
+            generateFruits(fruits);
+        }
+
+
+    }
+
 
 
 
     public void run() {
+        generateFruits(fruits);
 
         try {
             PlayerGamesThread player = new PlayerGamesThread(socket, python);
             player.start();
-            timerTask = new MyTimerTask(socket,python);
+            timerTask = new MyTimerTask(socket,fruits,python);
             timer.scheduleAtFixedRate(timerTask, 0, 500);
-
-
         } catch (Exception e) {
             Server.usersOnline.remove(login);
             System.out.println(e);
