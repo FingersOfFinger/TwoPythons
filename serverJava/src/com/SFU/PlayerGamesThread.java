@@ -47,6 +47,7 @@ public class PlayerGamesThread extends Thread{
 
             }
         } catch (Exception e) {
+            Server.testSockets.clear();
             ServerClientGameThread.stopTimer(Server.getPort(socket.getRemoteSocketAddress()));
             System.out.println(e);
         }

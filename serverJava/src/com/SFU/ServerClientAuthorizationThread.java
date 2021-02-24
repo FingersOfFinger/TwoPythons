@@ -38,6 +38,7 @@ public class ServerClientAuthorizationThread extends Thread {
                         ServerClientGameThread gameThread = new ServerClientGameThread(Server.testSockets);
                         gameThread.start();
                         this.interrupt();
+
                     }
                     break;
             }
