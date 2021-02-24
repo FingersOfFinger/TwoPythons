@@ -50,12 +50,13 @@ public class ServerClientGameThread<checkFruits> extends Thread {
     public static void generateFruits(Vector<Point> fruits, Vector<Python> pythons) {
         int size = (int) (Math.random() * 3) + 1;
         Point point;
-        boolean flag = true;
+        boolean flag;
 
 
         for (int i = 0; i < size; i++) {
             while (true) {
-                point = new Point((int) (Math.random() * (19)) + 1, (int) (Math.random() * (19)) + 1);
+                flag=true;
+                point = new Point((int) (Math.random() * (19)), (int) (Math.random() * (19)));
                 for (int j = 0; j < pythons.size(); j++)
                     if (pythons.get(j).dots.contains(point)) {
                         flag = false;
@@ -100,7 +101,7 @@ public class ServerClientGameThread<checkFruits> extends Thread {
             }
 
             timerTask = new MyTimerTask(sockets, fruits, pythons);
-            timer.scheduleAtFixedRate(timerTask, 0, 500);
+            timer.scheduleAtFixedRate(timerTask, 0, 200);
         } catch (Exception e) {
             Server.usersOnline.remove(login);
             System.out.println(e);

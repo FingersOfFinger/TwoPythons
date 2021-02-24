@@ -80,13 +80,16 @@ public class SendCallBack {
         if (msgPythonOne.length() > 0) {
             msgPythonOne = new StringBuilder(msgPythonOne.substring(0, msgPythonOne.length() - 1));
         }
-        for(int i=0;i<pythons.get(1).dots.size();i++){
-            msgPythonTwo.append("{\"x\":\"").append(String.valueOf(pythons.get(1).dots.get(i).x)).append("\",\"y\":\"").append(String.valueOf(pythons.get(1).dots.get(i).y)).append("\"},");
-        }
-        if (msgPythonTwo.length() > 0) {
-            msgPythonTwo = new StringBuilder(msgPythonTwo.substring(0, msgPythonTwo.length() - 1));
+        if(pythons.size()>1) {
+            for (int i = 0; i < pythons.get(1).dots.size(); i++) {
+                msgPythonTwo.append("{\"x\":\"").append(String.valueOf(pythons.get(1).dots.get(i).x)).append("\",\"y\":\"").append(String.valueOf(pythons.get(1).dots.get(i).y)).append("\"},");
+            }
+            if (msgPythonTwo.length() > 0) {
+                msgPythonTwo = new StringBuilder(msgPythonTwo.substring(0, msgPythonTwo.length() - 1));
+            }
         }
         StringBuilder msgFruits= new StringBuilder();
+
         for(int i=0;i<fruits.size();i++){
             msgFruits.append("{\"x\":\"").append(String.valueOf(fruits.get(i).x)).append("\",\"y\":\"").append(String.valueOf(fruits.get(i).y)).append("\"},");
         }
