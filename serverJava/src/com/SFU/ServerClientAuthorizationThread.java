@@ -22,7 +22,7 @@ public class ServerClientAuthorizationThread extends Thread {
         socket = inSocket;
     }
 
-    private void pars(String word) throws ParseException, IOException {
+    private void pars(String word) throws ParseException, IOException, InterruptedException {
         Object obj = new JSONParser().parse(word);
         JSONObject json = (JSONObject) obj;
         if (((String) json.get("globalType")).equals("connection")) {
@@ -36,10 +36,14 @@ public class ServerClientAuthorizationThread extends Thread {
                 case("test"):
 
                     Server.testSockets.add(socket);
+                    this.interrupt();
                     if(Server.testSockets.size()==2) {
+
+
                         ServerClientGameThread gameThread = new ServerClientGameThread(Server.testSockets);
                         gameThread.start();
-                        this.interrupt();
+
+
                     }
 
 
@@ -105,8 +109,8 @@ public class ServerClientAuthorizationThread extends Thread {
 
             while (!this.isInterrupted()) {
                 int c;
-                word = in.readLine();
 
+                    word = in.readLine();
 
                 System.out.println(word);
                 try {
@@ -117,6 +121,10 @@ public class ServerClientAuthorizationThread extends Thread {
                 }
 
             }
+            System.out.println("hh");
+
+
+
 
 
         } catch (Exception e) {

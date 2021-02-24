@@ -37,7 +37,7 @@ public class PlayerGamesThread extends Thread{
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (!this.isInterrupted()) {
                 word = in.readLine();
-                System.out.println(word);
+               // System.out.println(word);
                 try {
                     pars(word);
 

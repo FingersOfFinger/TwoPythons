@@ -2,6 +2,9 @@ package com.SFU;
 
 import org.json.simple.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -29,8 +32,6 @@ public class Server {
                 mapSockets.put(getPort(socket.getRemoteSocketAddress()),socket);
                 System.out.println(" >> " + "Client No:" + getPort(socket.getRemoteSocketAddress())+ " started!");
                 startAuthorizationThread(socket);
-
-
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -38,11 +39,14 @@ public class Server {
     }
     public static void startAuthorizationThread(Socket socket){
         ServerClientAuthorizationThread sct = new ServerClientAuthorizationThread(socket);
+
         sct.start();
     }
     public static void startClientLobbyThread(Socket socket, JSONObject json){
         ServerClientLobbyThread sct=new ServerClientLobbyThread(socket,json);
+
         sct.start();
     }
+
 }
 
