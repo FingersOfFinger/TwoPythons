@@ -2,6 +2,7 @@ package com.SFU;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Vector;
 
 
 import org.json.simple.JSONObject;
@@ -10,6 +11,7 @@ import org.json.simple.parser.ParseException;
 
 
 public class ServerClientAuthorizationThread extends Thread {
+
     public Socket socket;
     public BufferedReader in;
     private DbHandler dbHandler = DbHandler.getInstance();
@@ -31,9 +33,12 @@ public class ServerClientAuthorizationThread extends Thread {
                     registration(json);
                     break;
                 case("test"):
-                    ServerClientGameThread gameThread= new ServerClientGameThread(socket);
-                    gameThread.start();
-                    this.interrupt();
+                    Server.testSockets.add(socket);
+                    if(Server.testSockets.size()==1) {
+                        ServerClientGameThread gameThread = new ServerClientGameThread(Server.testSockets);
+                        gameThread.start();
+                        this.interrupt();
+                    }
                     break;
             }
         } else {

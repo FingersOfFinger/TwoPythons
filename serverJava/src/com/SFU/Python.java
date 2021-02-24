@@ -5,12 +5,38 @@ import java.util.Vector;
 
 public class Python {
     public Vector<Point> dots = new Vector<>();
-    Direction direction = Direction.right;
+    Direction direction;
 
-    public void setFirstDots(Point p1, Point p2, Point p3) {
-        dots.add(p1);
-        dots.add(p2);
-        dots.add(p3);
+
+    Python(int keyGeneration) {
+        switch (keyGeneration){
+            case 1:
+                dots.add(new Point(2,0));
+                dots.add(new Point(1, 0));
+                dots.add(new Point(0, 0));
+                direction = Direction.right;
+                break;
+            case 2:
+                dots.add(new Point(2,19));
+                dots.add(new Point(1, 19));
+                dots.add(new Point(0, 19));
+                direction = Direction.right;
+                break;
+            case 3:
+                dots.add(new Point(17,0));
+                dots.add(new Point(18, 0));
+                dots.add(new Point(19, 0));
+                direction = Direction.left;
+                break;
+            case 4:
+                dots.add(new Point(17,19));
+                dots.add(new Point(18, 19));
+                dots.add(new Point(19, 19));
+                direction = Direction.left;
+                break;
+        }
+
+
     }
 
     public void setDirection(String inDirection) {

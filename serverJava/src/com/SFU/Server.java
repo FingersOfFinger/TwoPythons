@@ -15,7 +15,7 @@ public class Server {
     public static Vector<Lobby>allLobby=new Vector<>();
     public static Vector<String> usersOnline= new Vector<>();
     public static HashMap<Integer,String>mapLoginsOnline=new HashMap<>();
-
+    public static Vector<Socket>testSockets=new Vector<>(); // Тест игры, не забыть удалить
     public static int getPort(SocketAddress address){
         return ((InetSocketAddress) address).getPort();
     }

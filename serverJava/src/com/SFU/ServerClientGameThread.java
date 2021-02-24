@@ -17,23 +17,20 @@ import java.util.Vector;
 public class ServerClientGameThread<checkFruits> extends Thread {
     public Vector<Point>fruits=new Vector<>();
     private static final HashMap<Integer,Timer>hashTimers=new HashMap<>();
-    public Socket socket;
+    public Vector<Socket> sockets;
     public Socket socketTwo;
     private String login;
     public Python python;
     Timer timer;
     private TimerTask timerTask;
 
-    ServerClientGameThread(Socket inSocket) {
-        python = new Python();
-        socket = inSocket;
-        python.setDirection("right");
-        Point p1 = new Point(2, 0);
-        Point p2 = new Point(1, 0);
-        Point p3 = new Point(0, 0);
-        python.setFirstDots(p1, p2, p3);
+    ServerClientGameThread(Vector<Socket> inSocket) {
+        python = new Python(3);
+        sockets = inSocket;
         timer = new Timer();
-        hashTimers.put(Server.getPort(socket.getRemoteSocketAddress()),timer);
+        for (int i=0;i<sockets.size();i++) {
+            hashTimers.put(Server.getPort(sockets.get(i).getRemoteSocketAddress()), timer);
+        }
        //hashTimers.put(Server.getPort(socketTwo.getRemoteSocketAddress(),timer));
     }
     public static void stopTimer(int idSocket){
@@ -46,7 +43,7 @@ public class ServerClientGameThread<checkFruits> extends Thread {
         int size=(int)(Math.random()*3)+1;
 
         for(int i=0;i<size;i++){
-            fruits.add(new Point((int)(Math.random()*(15))+1,(int)(Math.random()*(15))+1));
+            fruits.add(new Point((int)(Math.random()*(19))+1,(int)(Math.random()*(19))+1));
         }
 
     }
@@ -72,9 +69,9 @@ public class ServerClientGameThread<checkFruits> extends Thread {
         generateFruits(fruits);
 
         try {
-            PlayerGamesThread player = new PlayerGamesThread(socket, python);
+            PlayerGamesThread player = new PlayerGamesThread(sockets.get(0), python);
             player.start();
-            timerTask = new MyTimerTask(socket,fruits,python);
+            timerTask = new MyTimerTask(sockets.get(0),fruits,python);
             timer.scheduleAtFixedRate(timerTask, 0, 500);
         } catch (Exception e) {
             Server.usersOnline.remove(login);
