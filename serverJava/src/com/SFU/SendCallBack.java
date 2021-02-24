@@ -70,14 +70,21 @@ public class SendCallBack {
         out.write("{\"globalType\":\"lobby\",\"type\":\"receiveStatGame\",\"userScore\":[" + msg + "]}");
         out.flush();
     }
-    public static void sendCallbackSetDisplay(Python python, Socket socket, Vector<Point>fruits) throws IOException { //тут в будущем будет много чего
+    public static void sendCallbackSetDisplay(Vector<Python> pythons, Socket socket, Vector<Point>fruits) throws IOException { //тут в будущем будет много чего
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         StringBuilder msgPythonOne= new StringBuilder();
-        for(int i=0;i<python.dots.size();i++){
-            msgPythonOne.append("{\"x\":\"").append(String.valueOf(python.dots.get(i).x)).append("\",\"y\":\"").append(String.valueOf(python.dots.get(i).y)).append("\"},");
+        StringBuilder msgPythonTwo= new StringBuilder();
+        for(int i=0;i<pythons.get(0).dots.size();i++){
+            msgPythonOne.append("{\"x\":\"").append(String.valueOf(pythons.get(0).dots.get(i).x)).append("\",\"y\":\"").append(String.valueOf(pythons.get(0).dots.get(i).y)).append("\"},");
         }
         if (msgPythonOne.length() > 0) {
             msgPythonOne = new StringBuilder(msgPythonOne.substring(0, msgPythonOne.length() - 1));
+        }
+        for(int i=0;i<pythons.get(1).dots.size();i++){
+            msgPythonTwo.append("{\"x\":\"").append(String.valueOf(pythons.get(1).dots.get(i).x)).append("\",\"y\":\"").append(String.valueOf(pythons.get(1).dots.get(i).y)).append("\"},");
+        }
+        if (msgPythonTwo.length() > 0) {
+            msgPythonTwo = new StringBuilder(msgPythonTwo.substring(0, msgPythonTwo.length() - 1));
         }
         StringBuilder msgFruits= new StringBuilder();
         for(int i=0;i<fruits.size();i++){
@@ -86,7 +93,7 @@ public class SendCallBack {
         if (msgFruits.length() > 0) {
             msgFruits = new StringBuilder(msgFruits.substring(0, msgFruits.length() - 1));
         }
-        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\",\"coordinatesPython1\":["+msgPythonOne+"],\"coordinatesFruits\":["+msgFruits+"]}");
+        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\",\"coordinatesPython1\":["+msgPythonOne+"],\"coordinatesFruits\":["+msgFruits+"],\"coordinatesPython2\":["+msgPythonTwo+"]}");
         out.flush();
     }
 

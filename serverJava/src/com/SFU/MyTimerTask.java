@@ -7,27 +7,33 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 public class MyTimerTask extends TimerTask {
-    private final Socket socket;
-    private final Python python;
+
+    private Vector<Socket> sockets;
+    private Vector<Python> pythons;
     private final Vector<Point> fruits;
 
 
-    MyTimerTask(Socket inSocket, Vector<Point>inFruits, Python inPython) {
-        socket = inSocket;
-        python = inPython;
-        fruits=inFruits;
+    MyTimerTask(Vector<Socket> inSocket, Vector<Point> inFruits, Vector<Python> inPythons) {
+        sockets = inSocket;
+        pythons = inPythons;
+        fruits = inFruits;
 
 
     }
 
     @Override
     public void run() {
+
         try {
-            SendCallBack.sendCallbackSetDisplay(python, socket,fruits);
+            for (int i = 0; i < sockets.size(); i++) {
+                SendCallBack.sendCallbackSetDisplay(pythons, sockets.get(i), fruits);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ServerClientGameThread.checkFruits(fruits,python);
-        python.move();
+        ServerClientGameThread.checkFruits(fruits, pythons);
+        for (int i = 0; i < pythons.size(); i++) {
+            pythons.get(i).move();
+        }
     }
 }

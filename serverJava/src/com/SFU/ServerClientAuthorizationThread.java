@@ -17,6 +17,7 @@ public class ServerClientAuthorizationThread extends Thread {
     private DbHandler dbHandler = DbHandler.getInstance();
     private String login;
 
+
     ServerClientAuthorizationThread(Socket inSocket) {
         socket = inSocket;
     }
@@ -33,13 +34,23 @@ public class ServerClientAuthorizationThread extends Thread {
                     registration(json);
                     break;
                 case("test"):
+
                     Server.testSockets.add(socket);
-                    if(Server.testSockets.size()==1) {
+                    if(Server.testSockets.size()==2) {
                         ServerClientGameThread gameThread = new ServerClientGameThread(Server.testSockets);
                         gameThread.start();
                         this.interrupt();
-
                     }
+
+
+                    /**
+                    Vector<Socket>testSockets=new Vector<>();
+                    testSockets.add(socket);
+                    ServerClientGameThread gameThread=new ServerClientGameThread(testSockets);
+                    gameThread.start();
+                    this.interrupt();
+                     }*/
+
                     break;
             }
         } else {
