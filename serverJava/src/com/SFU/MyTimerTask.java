@@ -24,16 +24,22 @@ public class MyTimerTask extends TimerTask {
     @Override
     public void run() {
 
-        try {
-            for (int i = 0; i < sockets.size(); i++) {
-                SendCallBack.sendCallbackSetDisplay(pythons, sockets.get(i), fruits);
+            try {
+                for (int i = 0; i < sockets.size(); i++) {
+                    SendCallBack.sendCallbackSetDisplay(pythons, sockets.get(i), fruits);
+                }
+            } catch (IOException e) {
+
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ServerClientGameThread.checkFruits(fruits, pythons);
-        for (int i = 0; i < pythons.size(); i++) {
-            pythons.get(i).move();
-        }
+            ServerClientGameThread.checkFruits(fruits, pythons);
+            for (int i = 0; i < pythons.size(); i++) {
+                pythons.get(i).move();
+            }
+
+
+
     }
+
+
 }

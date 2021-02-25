@@ -72,6 +72,7 @@ public class SendCallBack {
     }
     public static void sendCallbackSetDisplay(Vector<Python> pythons, Socket socket, Vector<Point>fruits) throws IOException { //тут в будущем будет много чего
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        socket.setTcpNoDelay(true);
         StringBuilder msgPythonOne= new StringBuilder();
         StringBuilder msgPythonTwo= new StringBuilder();
         for(int i=0;i<pythons.get(0).dots.size();i++){
@@ -98,6 +99,7 @@ public class SendCallBack {
         }
         out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\",\"coordinatesPython1\":["+msgPythonOne+"],\"coordinatesFruits\":["+msgFruits+"],\"coordinatesPython2\":["+msgPythonTwo+"]}");
         out.flush();
+        socket.setTcpNoDelay(false);
     }
 
 }

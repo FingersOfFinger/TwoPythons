@@ -1,27 +1,22 @@
 package com.SFU;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
-public class ServerClientGameThread<checkFruits> extends Thread {
+public class ServerClientGameThread extends Thread {
     public Vector<Point> fruits = new Vector<>();
     private static final HashMap<Integer, Timer> hashTimers = new HashMap<>();
+
     public Vector<Socket> sockets;
     private String login;
     public Vector<Python> pythons = new Vector<>();
     Timer timer;
-    private TimerTask timerTask;
 
     ServerClientGameThread(Vector<Socket> inSockets) {
 
@@ -33,17 +28,22 @@ public class ServerClientGameThread<checkFruits> extends Thread {
 
         sockets = inSockets;
         timer = new Timer();
-        for (int i = 0; i < sockets.size(); i++) {
-            hashTimers.put(Server.getPort(sockets.get(i).getRemoteSocketAddress()), timer);
+        for (Socket socket : sockets) {
+            hashTimers.put(Server.getPort(socket.getRemoteSocketAddress()), timer);
+
         }
         //hashTimers.put(Server.getPort(socketTwo.getRemoteSocketAddress(),timer));
     }
 
     public static void stopTimer(int idSocket) {
+        System.out.println("Результат");
         Timer timer = hashTimers.get(idSocket);
-        if (timer!=null)
-            timer.cancel();
         hashTimers.remove(idSocket);
+        if (timer!=null) {
+
+            timer.cancel();
+        }
+
 
     }
 
@@ -54,17 +54,15 @@ public class ServerClientGameThread<checkFruits> extends Thread {
 
 
         for (int i = 0; i < size; i++) {
-            while (true) {
-                flag=true;
+            do {
+                flag = true;
                 point = new Point((int) (Math.random() * (19)), (int) (Math.random() * (19)));
-                for (int j = 0; j < pythons.size(); j++)
-                    if (pythons.get(j).dots.contains(point)) {
+                for (Python python : pythons)
+                    if (python.dots.contains(point)) {
                         flag = false;
                         break;
                     }
-                if (flag)
-                    break;
-            }
+            } while (!flag);
 
 
             fruits.add(point);
@@ -74,10 +72,10 @@ public class ServerClientGameThread<checkFruits> extends Thread {
 
     public static void checkFruits(Vector<Point> fruits, Vector<Python> pythons) {
         for (int i = 0; i < fruits.size(); i++) {
-            for (int j = 0; j < pythons.size(); j++) {
-                if (pythons.get(j).dots.firstElement().equals(fruits.get(i))) {
-                    fruits.remove(pythons.get(j).dots.firstElement());
-                    pythons.get(j).height();
+            for (Python python : pythons) {
+                if (python.dots.firstElement().equals(fruits.get(i))) {
+                    fruits.remove(python.dots.firstElement());
+                    python.height();
                     break;
                 }
             }
@@ -100,11 +98,11 @@ public class ServerClientGameThread<checkFruits> extends Thread {
                 (new PlayerGamesThread(sockets.get(i), pythons.get(i))).start();
             }
 
-            timerTask = new MyTimerTask(sockets, fruits, pythons);
-            timer.scheduleAtFixedRate(timerTask, 0, 200);
+            TimerTask timerTask = new MyTimerTask(sockets, fruits, pythons);
+            timer.scheduleAtFixedRate(timerTask, 0, 150);
         } catch (Exception e) {
             Server.usersOnline.remove(login);
-            System.out.println(e);
+            System.out.println();
         }
     }
 }
