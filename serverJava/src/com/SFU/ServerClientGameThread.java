@@ -12,7 +12,7 @@ import java.util.Vector;
 public class ServerClientGameThread extends Thread {
     public Vector<Point> fruits = new Vector<>();
     private static final HashMap<Integer, Timer> hashTimers = new HashMap<>();
-
+    private static final HashMap<Integer, Timer> hashTimersPrepare = new HashMap<>();
     public Vector<Socket> sockets;
     private String login;
     public Vector<Python> pythons = new Vector<>();
@@ -32,6 +32,7 @@ public class ServerClientGameThread extends Thread {
         timerPreparation=new Timer();
         for (Socket socket : sockets) {
             hashTimers.put(Server.getPort(socket.getRemoteSocketAddress()), timer);
+            hashTimersPrepare.put(Server.getPort(socket.getRemoteSocketAddress()), timerPreparation);
 
         }
         //hashTimers.put(Server.getPort(socketTwo.getRemoteSocketAddress(),timer));
@@ -41,9 +42,12 @@ public class ServerClientGameThread extends Thread {
         System.out.println("Результат");
         Timer timer = hashTimers.get(idSocket);
         hashTimers.remove(idSocket);
+        Timer timerPrepare = hashTimersPrepare.get(idSocket);
+        hashTimersPrepare.remove(idSocket);
         if (timer!=null) {
 
             timer.cancel();
+            timerPrepare.cancel();
         }
 
 
@@ -100,13 +104,14 @@ public class ServerClientGameThread extends Thread {
             for (int i = 0; i < pythons.size(); i++) {
                 (new PlayerGamesThread(sockets.get(i), pythons.get(i))).start();
             }
-            TimerTask timerTaskPrepareGame=new ReadyTimerTask(sockets);
+
 
 
             TimerTask timerTask = new MyTimerTask(sockets, fruits, pythons);
+            TimerTask timerTaskPrepareGame=new ReadyTimerTask(sockets,timer,timerTask);
             timerPreparation.scheduleAtFixedRate(timerTaskPrepareGame,0,1000);
-            sleep(10000);
-            timer.scheduleAtFixedRate(timerTask, 0, 150);
+
+
         } catch (Exception e) {
             Server.usersOnline.remove(login);
             System.out.println();

@@ -34,8 +34,12 @@ public class Python {
             }
             this.move();
             this.move();
+
+
+
+
             for(int i=0;i<pythons.size();i++)
-                if(pythons.get(i).dots.contains(dots)){
+                if(pythons.get(i).dots.contains(this.dots)){
                     flag=false;
                 }
             if(flag)
