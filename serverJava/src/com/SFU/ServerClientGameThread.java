@@ -109,6 +109,7 @@ public class ServerClientGameThread extends Thread {
 
             TimerTask timerTask = new MyTimerTask(sockets, fruits, pythons);
             TimerTask timerTaskPrepareGame=new ReadyTimerTask(sockets,timer,timerTask);
+            sleep (500);
             timerPreparation.scheduleAtFixedRate(timerTaskPrepareGame,0,1000);
 
 

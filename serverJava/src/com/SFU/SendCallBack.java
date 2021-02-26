@@ -70,7 +70,7 @@ public class SendCallBack {
         out.write("{\"globalType\":\"lobby\",\"type\":\"receiveStatGame\",\"userScore\":[" + msg + "]}");
         out.flush();
     }
-    public static void sendCallbackSetDisplay(Vector<Python> pythons, Socket socket, Vector<Point>fruits,int points) throws IOException { //тут в будущем будет много чего
+    public static void sendCallbackSetDisplay(Vector<Python> pythons, Socket socket, Vector<Point>fruits,int points, Color color) throws IOException { //тут в будущем будет много чего
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         socket.setTcpNoDelay(true);
         StringBuilder msgPythons= new StringBuilder();
@@ -98,7 +98,7 @@ public class SendCallBack {
         if (msgFruits.length() > 0) {
             msgFruits = new StringBuilder(msgFruits.substring(0, msgFruits.length() - 1));
         }
-        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\","+msgPythons+"\"points\":\""+points+"\",\"coordinatesFruits\":["+msgFruits+"]}");
+        out.write("{\"globalType\":\"game\",\"type\":\"setDisplay\","+msgPythons+"\"points\":\""+points+"\",\"coordinatesFruits\":["+msgFruits+"],\"myColor\":[\""+color.getRed()+"\",\""+color.getGreen()+"\",\""+color.getBlue()+"\"]}");
         out.flush();
         socket.setTcpNoDelay(false);
     }
