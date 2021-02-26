@@ -22,7 +22,7 @@ public class ServerClientGameThread extends Thread {
 
         for (int i = 0; i < inSockets.size(); i++) {
 
-            pythons.add(new Python(i + 1));
+            pythons.add(new Python(pythons));
         }
 
 
@@ -100,6 +100,7 @@ public class ServerClientGameThread extends Thread {
             }
 
             TimerTask timerTask = new MyTimerTask(sockets, fruits, pythons);
+            sleep(1000);
             timer.scheduleAtFixedRate(timerTask, 0, 150);
         } catch (Exception e) {
             Server.usersOnline.remove(login);

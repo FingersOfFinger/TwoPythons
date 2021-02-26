@@ -13,10 +13,15 @@ public class MyTimerTask extends TimerTask {
     private final Vector<Point> fruits;
 
 
-    MyTimerTask(Vector<Socket> inSocket, Vector<Point> inFruits, Vector<Python> inPythons) {
+    MyTimerTask(Vector<Socket> inSocket, Vector<Point> inFruits, Vector<Python> inPythons) throws IOException {
         sockets = inSocket;
         pythons = inPythons;
         fruits = inFruits;
+
+            for (int i = 0; i < sockets.size(); i++) {
+                SendCallBack.sendCallbackSetDisplay(pythons, sockets.get(i), fruits,pythons.get(i).points);
+            }
+
 
 
     }

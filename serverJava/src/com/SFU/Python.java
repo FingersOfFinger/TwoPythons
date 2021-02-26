@@ -6,40 +6,42 @@ import java.util.Vector;
 public class Python {
     public Vector<Point> dots = new Vector<>();
     Direction direction;
-    public int points=0;
-    public Color color=new Color((int) (Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255));
+    public int points = 0;
+    public Color color = new Color((int) (Math.random() * 255), (int) (Math.random() * 230), (int) (Math.random() * 200));
 
 
+    Python(Vector<Python> pythons) {
+        boolean flag;
+        while (true) {
+            flag=true;
+            dots.add(new Point((int) (Math.random() * 16) + 3, (int) (Math.random() * 16) + 3));
+            int random = (int) (Math.random() * 3);
+            dots.add(new Point(0,0));
+            dots.add(new Point(0,0));
+            switch (random) {
+                case 0:
+                    direction = Direction.left;
+                    break;
+                case 1:
+                    direction = Direction.right;
 
-    Python(int keyGeneration) {
-        switch (keyGeneration) {
-            case 1 -> {
-                dots.add(new Point(2, 0));
-                dots.add(new Point(1, 0));
-                dots.add(new Point(0, 0));
-                direction = Direction.right;
+                case 2:
+                    direction = Direction.up;
+                    break;
+                case 3:
+                    direction = Direction.down;
+                    break;
             }
-            case 2 -> {
-                dots.add(new Point(2, 19));
-                dots.add(new Point(1, 19));
-                dots.add(new Point(0, 19));
-                direction = Direction.right;
-            }
-            case 3 -> {
-                dots.add(new Point(17, 0));
-                dots.add(new Point(18, 0));
-                dots.add(new Point(19, 0));
-                direction = Direction.left;
-            }
-            case 4 -> {
-                dots.add(new Point(17, 19));
-                dots.add(new Point(18, 19));
-                dots.add(new Point(19, 19));
-                direction = Direction.left;
-            }
+            this.move();
+            this.move();
+            for(int i=0;i<pythons.size();i++)
+                if(pythons.get(i).dots.contains(dots)){
+                    flag=false;
+                }
+            if(flag)
+                break;
+            dots.clear();
         }
-
-
     }
 
     public void setDirection(String inDirection) {
