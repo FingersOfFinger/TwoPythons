@@ -17,6 +17,7 @@ public class ServerClientGameThread extends Thread {
     private String login;
     public Vector<Python> pythons = new Vector<>();
     Timer timer;
+    Timer timerPreparation;
 
     ServerClientGameThread(Vector<Socket> inSockets) {
 
@@ -28,6 +29,7 @@ public class ServerClientGameThread extends Thread {
 
         sockets = inSockets;
         timer = new Timer();
+        timerPreparation=new Timer();
         for (Socket socket : sockets) {
             hashTimers.put(Server.getPort(socket.getRemoteSocketAddress()), timer);
 
@@ -98,9 +100,12 @@ public class ServerClientGameThread extends Thread {
             for (int i = 0; i < pythons.size(); i++) {
                 (new PlayerGamesThread(sockets.get(i), pythons.get(i))).start();
             }
+            TimerTask timerTaskPrepareGame=new ReadyTimerTask(sockets);
+
 
             TimerTask timerTask = new MyTimerTask(sockets, fruits, pythons);
-            sleep(1000);
+            timerPreparation.scheduleAtFixedRate(timerTaskPrepareGame,0,1000);
+            sleep(10000);
             timer.scheduleAtFixedRate(timerTask, 0, 150);
         } catch (Exception e) {
             Server.usersOnline.remove(login);

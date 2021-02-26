@@ -102,5 +102,11 @@ public class SendCallBack {
         out.flush();
         socket.setTcpNoDelay(false);
     }
+    public static void SendCallbackPreparationGame(Socket socket,int time) throws IOException {
+        out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        out.write("{\"globalType\":\"game\",\"type\":\"prepareTimer\",\"time\":\""+time+"\"}");
+        out.flush();
+
+    }
 
 }
