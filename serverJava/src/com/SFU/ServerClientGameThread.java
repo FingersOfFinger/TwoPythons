@@ -76,6 +76,7 @@ public class ServerClientGameThread extends Thread {
                 if (python.dots.firstElement().equals(fruits.get(i))) {
                     fruits.remove(python.dots.firstElement());
                     python.height();
+                    python.points++;
                     break;
                 }
             }

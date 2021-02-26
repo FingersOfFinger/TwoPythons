@@ -6,34 +6,37 @@ import java.util.Vector;
 public class Python {
     public Vector<Point> dots = new Vector<>();
     Direction direction;
+    public int points=0;
+    public Color color=new Color((int) (Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255));
+
 
 
     Python(int keyGeneration) {
-        switch (keyGeneration){
-            case 1:
-                dots.add(new Point(2,0));
+        switch (keyGeneration) {
+            case 1 -> {
+                dots.add(new Point(2, 0));
                 dots.add(new Point(1, 0));
                 dots.add(new Point(0, 0));
                 direction = Direction.right;
-                break;
-            case 2:
-                dots.add(new Point(2,19));
+            }
+            case 2 -> {
+                dots.add(new Point(2, 19));
                 dots.add(new Point(1, 19));
                 dots.add(new Point(0, 19));
                 direction = Direction.right;
-                break;
-            case 3:
-                dots.add(new Point(17,0));
+            }
+            case 3 -> {
+                dots.add(new Point(17, 0));
                 dots.add(new Point(18, 0));
                 dots.add(new Point(19, 0));
                 direction = Direction.left;
-                break;
-            case 4:
-                dots.add(new Point(17,19));
+            }
+            case 4 -> {
+                dots.add(new Point(17, 19));
                 dots.add(new Point(18, 19));
                 dots.add(new Point(19, 19));
                 direction = Direction.left;
-                break;
+            }
         }
 
 

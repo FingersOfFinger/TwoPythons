@@ -26,7 +26,7 @@ public class MyTimerTask extends TimerTask {
 
             try {
                 for (int i = 0; i < sockets.size(); i++) {
-                    SendCallBack.sendCallbackSetDisplay(pythons, sockets.get(i), fruits);
+                    SendCallBack.sendCallbackSetDisplay(pythons, sockets.get(i), fruits,pythons.get(i).points);
                 }
             } catch (IOException e) {
 
