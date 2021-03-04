@@ -6,6 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
 
+import static java.lang.Thread.sleep;
+
 public class ReadyTimerTask extends TimerTask {
     private int timer =0;
     private Timer nextTimer;
@@ -28,6 +30,11 @@ public class ReadyTimerTask extends TimerTask {
             }
         }
         if(timer==10) {
+            try {
+                sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             cancel();
             nextTimer.scheduleAtFixedRate(timerTask, 0, 150);
         }
