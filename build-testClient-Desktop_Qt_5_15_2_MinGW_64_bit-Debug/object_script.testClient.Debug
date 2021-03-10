@@ -1,0 +1,10 @@
+debug/Authorization.o
+debug/Lobby.o
+debug/Registration.o
+debug/gamewindow.o
+debug/main.o
+debug/python.o
+debug/moc_Authorization.o
+debug/moc_Lobby.o
+debug/moc_Registration.o
+debug/moc_gamewindow.o
