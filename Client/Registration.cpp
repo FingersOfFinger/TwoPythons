@@ -1,21 +1,16 @@
-#include "Registration.h"
+#include "registration.h"
 
-Registration::Registration(QWidget *parent) :
+Registration::Registration(QTcpSocket *inSocket,QWidget *parent) :
     QWidget(parent)
 {
+    socket = inSocket;
     this->setWindowTitle("Регистрация");
     this->setWindowIcon(QIcon("image/Registration.png"));
     this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
     drowElements();
 
-    socket = new QTcpSocket(this);
-    socket->connectToHost("104.154.224.15",49002);
-    connect(socket,SIGNAL(readyRead()),this,SLOT(sockConnect()));
+    connect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
     connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));
-    char str[100];
-    std::string str2 = "{\"globalType\":\"connection\",\"type\":\"registration\"}\r\n\r\n";
-    strcpy(str,str2.c_str());
-    socket->write(str);
 }
 
 void Registration::drowElements()
@@ -86,53 +81,43 @@ void Registration::registerButtonPressed()
     QByteArray str = "{\"globalType\":\"connection\",\"type\":\"registration\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n\r\n";
     socket->write(str);
     socket->waitForBytesWritten(50);
-
-    if (checkCorrectInput())
-    {
-        QMessageBox::information(this, "Информация","Приветствуем, "+loginLine->text()+"!");
-        closeWindow();
-    }
-    else
-    {
-        QMessageBox::critical(this, "Ошибка", "<div align=center>Ошибка корректности ввода данных!</div>");
-    }
 }
 
-bool Registration::checkCorrectInput()
-{
-    Data = socket->readAll();
-    qDebug() << Data;
-    doc = QJsonDocument::fromJson(Data, &docError);
-    if (docError.errorString() == "no error occurred")
-    {
-        if ((doc.object().value("globalType").toString() == "connection") && (doc.object().value("type").toString() == "registration") && (doc.object().value("access").toString() == "true"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    else
-    {
-        QMessageBox::information(this, "Информация","Ошибка с форматом передачи данных: "+docError.errorString());
-    }
-}
-
-void Registration::closeWindow()
-{
-    Authorization *closeReg = new Authorization;
-    this->hide();
-    closeReg->show();
-}
-
-void Registration::sockConnect()
+void Registration::checkCorrectInput()
 {
     if(socket->waitForConnected(50))
     {
         socket->waitForReadyRead(50);
+        Data = socket->readAll();
+        qDebug() << Data;
+        doc = QJsonDocument::fromJson(Data, &docError);
+        if (docError.errorString() == "no error occurred")
+        {
+            if ((doc.object().value("globalType").toString() == "connection") && (doc.object().value("type").toString() == "registration") && (doc.object().value("access").toString() == "true"))
+            {
+                QMessageBox::information(this, "Информация","Приветствуем, "+loginLine->text()+"!");
+                closeWindow();
+            }
+            else
+            {
+                QMessageBox::critical(this, "Ошибка", "<div align=center>Ошибка корректности ввода данных!</div>");
+            }
+        }
+        else
+        {
+            QMessageBox::information(this, "Информация","Ошибка с форматом передачи данных: "+docError.errorString());
+        }
     }
+
+}
+
+void Registration::closeWindow()
+{
+    disconnect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
+    socket->waitForDisconnected(50);
+    Authorization *closeReg = new Authorization;
+    this->hide();
+    closeReg->show();
 }
 
 void Registration::sockDisc()

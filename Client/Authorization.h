@@ -2,8 +2,9 @@
 #define Authorization_H
 
 #include "QWidget"
-#include "Registration.h"
-#include "Lobby.h"
+#include "authorizationview.h"
+#include "registration.h"
+#include "lobby.h"
 #include <QPainter>
 #include <QPushButton>
 #include <QLineEdit>
@@ -33,27 +34,22 @@ public:
 private:
     static const int WIDTH=500;
     static const int HIGHT=180;
-    void drowElements();
     QTcpSocket *socket;
     QByteArray Data;
-
-    QJsonDocument doc;
-    QJsonParseError docError;
-
-    QLabel *image;
-    QImage *i;
 
     QLineEdit *loginEdit;
     QLineEdit *passwordEdit;
     QPushButton *signInButton;
     QPushButton *registrationlButton;
 
+    QJsonDocument doc;
+    QJsonParseError docError;
+
 public slots:
-    bool checkTheEnteredData();
+    void checkTheEnteredData();
     void enableSignInButton(QString text);
     void signInButtonPressed();
     void registrationButtonPressed();
-    void sockConnect();
     void sockDisc();
 };
 

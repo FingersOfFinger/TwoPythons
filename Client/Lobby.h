@@ -2,8 +2,9 @@
 #define LOBBY_H
 
 #include <QWidget>
-#include "Registration.h"
-#include "Authorization.h"
+#include "registration.h"
+#include "authorization.h"
+#include "createlobby.h"
 #include <QPainter>
 #include <QPushButton>
 #include <QLineEdit>
@@ -31,7 +32,7 @@ class Lobby : public QWidget
     Q_OBJECT
 
 public:
-    explicit Lobby(QString,QWidget *parent = nullptr);
+    explicit Lobby(QTcpSocket*,QString,QWidget *parent = nullptr);
     ~Lobby();
 
 private:
@@ -42,28 +43,22 @@ private:
     QString Login;
     QTcpSocket *socket;
     QByteArray Data;
+    int id;
 
     QJsonDocument doc;
     QJsonParseError docError;
 
 public slots:
-     void sockConnect();
-     void sockDisc();
-     void enterLobby();
-     bool receiveEnterLobby();
-     void createLobby();
-     bool receiveCreateLobby();
-     void exitLobby();
-     bool receiveExitLobby();
-     void deleteLobby();
-     bool receiveDeleteLobby();
-     void refreshLobby();
-     void receiveGetLobby();
-     void statGame();
-     void receiveStatGame();
-     void startGame();
-     bool receiveStartGame();
-     void exit();
+    void receiveLobby();
+    void sockDisc();
+    void enterLobby();
+    void createLobby();
+    void exitLobby();
+    void deleteLobby();
+    void refreshLobby();
+    void statGame();
+    void startGame();
+    void exit();
 };
 
 #endif // LOBBY_H

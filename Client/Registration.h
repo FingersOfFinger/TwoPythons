@@ -1,7 +1,9 @@
 #ifndef Registration_H
 #define Registration_H
+
 #include "QWidget"
-#include "Authorization.h"
+#include "registrationview.h"
+#include "authorization.h"
 #include <QPainter>
 #include <QPushButton>
 #include <QLabel>
@@ -30,7 +32,7 @@ class Registration:public QWidget
 {
     Q_OBJECT
 public:
-    explicit Registration(QWidget *parent = 0);
+    explicit Registration(QTcpSocket*,QWidget *parent = 0);
     ~Registration();
 
 private:
@@ -54,11 +56,10 @@ private:
     QLabel *passwordLabel;
 
 public slots:
-    void sockConnect();
     void sockDisc();
     void enableRegisterButton(QString text);
     void registerButtonPressed();
-    bool checkCorrectInput();
+    void checkCorrectInput();
     void closeWindow();
 };
 

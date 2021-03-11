@@ -1,6 +1,5 @@
 #include <iostream>
-#include <Authorization.h>
-#include <Lobby.h>
+#include <authorization.h>
 #include <QApplication>
 using namespace std;
 
