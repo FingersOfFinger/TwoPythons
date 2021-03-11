@@ -42,8 +42,8 @@ public class Server {
 
         sct.start();
     }
-    public static void startClientLobbyThread(Socket socket, JSONObject json){
-        ServerClientLobbyThread sct=new ServerClientLobbyThread(socket,json);
+    public static void startClientLobbyThread(Socket socket, JSONObject json,String string ){
+        ServerClientLobbyThread sct=new ServerClientLobbyThread(socket,json,string);
 
         sct.start();
     }

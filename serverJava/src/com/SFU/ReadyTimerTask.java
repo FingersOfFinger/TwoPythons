@@ -36,7 +36,7 @@ public class ReadyTimerTask extends TimerTask {
                 e.printStackTrace();
             }
             cancel();
-            nextTimer.scheduleAtFixedRate(timerTask, 0, 300);
+            nextTimer.scheduleAtFixedRate(timerTask, 0, 150);
         }
 
     }

@@ -59,7 +59,7 @@ public class ServerClientAuthorizationThread extends Thread {
             }
         } else {
             if (((String) json.get("globalType")).equals("lobby")) {
-                Server.startClientLobbyThread(socket, json);
+                Server.startClientLobbyThread(socket, json,login);
                 this.interrupt();
             }
 

@@ -14,7 +14,7 @@ public class ServerClientLobbyThread extends Thread{
     private String login;
     private final JSONObject json;
     private DbHandler dbHandler = DbHandler.getInstance();
-    ServerClientLobbyThread(Socket inSocket,JSONObject inJson){socket=inSocket;json=inJson;}
+    ServerClientLobbyThread(Socket inSocket,JSONObject inJson,String inLogin){socket=inSocket;json=inJson;login=inLogin;}
     private void pars(String word) throws ParseException, IOException {
 
         Object obj = new JSONParser().parse(word);
