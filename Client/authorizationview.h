@@ -30,13 +30,6 @@ public:
     ~AuthorizationView();
 
 private:
-    QLabel *image;
-    QImage *i;
-
-    QLineEdit *loginEdit;
-    QLineEdit *passwordEdit;
-    QPushButton *signInButton;
-    QPushButton *registrationlButton;
 
 public slots:
 

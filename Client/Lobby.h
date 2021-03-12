@@ -2,6 +2,7 @@
 #define LOBBY_H
 
 #include <QWidget>
+#include "createlobby.h"
 #include "registration.h"
 #include "authorization.h"
 #include "createlobby.h"
@@ -40,7 +41,7 @@ private:
     static const int WIDTH=500;
     static const int HIGHT=180;
 
-    QString Login;
+    QString login;
     QTcpSocket *socket;
     QByteArray Data;
     int id;

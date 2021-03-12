@@ -28,7 +28,7 @@ class Authorization:public QWidget
     Q_OBJECT
 
 public:
-    explicit Authorization(QWidget *parent = 0);
+    explicit Authorization(QTcpSocket*,QWidget *parent = 0);
     ~Authorization();
 
 private:
@@ -36,6 +36,9 @@ private:
     static const int HIGHT=180;
     QTcpSocket *socket;
     QByteArray Data;
+
+    QLabel *image;
+    QImage *i;
 
     QLineEdit *loginEdit;
     QLineEdit *passwordEdit;
@@ -51,6 +54,9 @@ public slots:
     void signInButtonPressed();
     void registrationButtonPressed();
     void sockDisc();
+
+    void drowElements();
+    void signal();
 };
 
 #endif // Authorization_H

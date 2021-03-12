@@ -13,6 +13,8 @@ SOURCES += \
     authorization.cpp \
     authorizationview.cpp \
     createlobby.cpp \
+    createlobbyview.cpp \
+    deletelobby.cpp \
     gamewindow.cpp \
     lobby.cpp \
     main.cpp \
@@ -25,6 +27,8 @@ HEADERS += \
     authorization.h \
     authorizationview.h \
     createlobby.h \
+    createlobbyview.h \
+    deletelobby.h \
     gamewindow.h \
     lobby.h \
     mainwindow.h \

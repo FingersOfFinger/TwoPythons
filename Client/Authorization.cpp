@@ -1,39 +1,39 @@
 #include "authorization.h"
 
-Authorization::Authorization(QWidget *parent) :
+Authorization::Authorization(QTcpSocket *Socket,QWidget *parent) :
     QWidget(parent)
 {
-    this->setWindowTitle("Авторизация");
-    this->setWindowIcon(QIcon("image/window.png"));
-    this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
-    AuthorizationView();
+    socket = Socket;
+    drowElements();
+    signal();
+}
 
-    //loginEdit = login;
+void Authorization::signal()
+{
+    connect(signInButton, SIGNAL(clicked(bool)), this, SLOT(signInButtonPressed()));
+    connect(registrationlButton, SIGNAL(clicked(bool)), this, SLOT(registrationButtonPressed()));
 
-    socket = new QTcpSocket(this);
-    socket->connectToHost("104.154.224.15",49002);
+    connect(loginEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton(QString)));
+    connect(passwordEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton(QString)));
+
     connect(socket,SIGNAL(readyRead()),this,SLOT(checkTheEnteredData()));
     connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));
 }
 
-void Authorization::enableSignInButton(QString text)
-{
-    signInButton->setEnabled(!loginEdit->text().isEmpty() && !passwordEdit->text().isEmpty());
-}
-
 void Authorization::signInButtonPressed()
 {
+
     /*
     QByteArray login = QByteArray::fromStdString(loginEdit->text().toStdString());
     QByteArray password = QByteArray::fromStdString(passwordEdit->text().toStdString());
-    QByteArray str = "{\"globalType\":\"connection\",\"type\":\"authorization\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n\r\n";
     */
-    char str[100];
+
+    char request[100];
     std::string login = loginEdit->text().toStdString();
     std::string password = passwordEdit->text().toStdString();
-    std::string str2 = "{\"globalType\":\"connection\",\"type\":\"authorization\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n\r\n";
-    strcpy(str,str2.c_str());
-    socket->write(str);
+    std::string request2 = "{\"globalType\":\"connection\",\"type\":\"authorization\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n\r\n";
+    strcpy(request,request2.c_str());
+    socket->write(request);
     socket->waitForBytesWritten(50);
 }
 
@@ -49,6 +49,7 @@ void Authorization::checkTheEnteredData()
     Data = socket->readAll();
     qDebug() << Data;
     doc = QJsonDocument::fromJson(Data, &docError);
+
     /*
     if (docError.errorString() == "no error occurred")
     {

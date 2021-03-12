@@ -3,6 +3,15 @@
 AuthorizationView::AuthorizationView(QWidget *parent) :
     QWidget(parent)
 {
+
+}
+
+void Authorization::drowElements()
+{
+    this->setWindowTitle("Авторизация");
+    this->setWindowIcon(QIcon("image/window.png"));
+    this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
+
     image = new QLabel(this);
     i = new QImage("image/background2.png");
     QImage img = i->scaled(QSize(this->width(),this->height()), Qt::IgnoreAspectRatio);
@@ -31,17 +40,12 @@ AuthorizationView::AuthorizationView(QWidget *parent) :
     signInButton->setIcon(QPixmap("image/signin_button.png"));
     signInButton->setIconSize(QSize(145, 40));
     signInButton->setShortcut(QKeySequence(Qt::Key_Return));
-    connect(signInButton, SIGNAL(clicked(bool)), this, SLOT(signInButtonPressed()));
 
     registrationlButton = new QPushButton;
     registrationlButton->setFlat(true);
     registrationlButton->setIcon(QPixmap("image/register_button.png"));
     registrationlButton->setIconSize(QSize(145, 40));
     registrationlButton->setShortcut(QKeySequence(Qt::Key_Escape));
-    connect(registrationlButton, SIGNAL(clicked(bool)), this, SLOT(registrationButtonPressed()));
-
-    connect(loginEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton(QString)));
-    connect(passwordEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton(QString)));
 
     QHBoxLayout *buttonsLayout = new QHBoxLayout;
     buttonsLayout->setAlignment(Qt::AlignCenter);
@@ -56,8 +60,12 @@ AuthorizationView::AuthorizationView(QWidget *parent) :
     setLayout(mainLayout);
 }
 
+void Authorization::enableSignInButton(QString text)
+{
+    signInButton->setEnabled(!loginEdit->text().isEmpty() && !passwordEdit->text().isEmpty());
+}
+
 AuthorizationView ::~AuthorizationView()
 {
-    delete i;
-    delete image;
+
 }

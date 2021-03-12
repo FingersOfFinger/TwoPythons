@@ -1,6 +1,7 @@
 #ifndef REGISTRATIONVIEW_H
 #define REGISTRATIONVIEW_H
 
+#include "registration.h"
 #include <QWidget>
 #include <QPainter>
 #include <QPushButton>

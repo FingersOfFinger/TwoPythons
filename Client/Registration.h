@@ -42,11 +42,11 @@ private:
     QTcpSocket *socket;
     QByteArray Data;
 
-    QJsonDocument doc;
-    QJsonParseError docError;
-
     QLabel *image;
     QImage *i;
+
+    QJsonDocument doc;
+    QJsonParseError docError;
 
     QLineEdit *loginLine;
     QLineEdit *passwordLine;

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../build-testClient-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/image/window.png</normaloff>../build-testClient-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/image/window.png</iconset>
+    <normaloff>image/window.png</normaloff>image/window.png</iconset>
   </property>
   <widget class="QPushButton" name="Exit">
    <property name="geometry">
@@ -46,7 +46,7 @@
   <widget class="QPushButton" name="Refresh_lobby">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>350</x>
      <y>400</y>
      <width>75</width>
      <height>23</height>

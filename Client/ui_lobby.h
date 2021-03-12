@@ -47,7 +47,7 @@ public:
             Lobby->setObjectName(QString::fromUtf8("Lobby"));
         Lobby->resize(690, 431);
         QIcon icon;
-        icon.addFile(QString::fromUtf8("../build-testClient-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/image/window.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("image/window.png"), QSize(), QIcon::Normal, QIcon::Off);
         Lobby->setWindowIcon(icon);
         Exit = new QPushButton(Lobby);
         Exit->setObjectName(QString::fromUtf8("Exit"));
@@ -57,7 +57,7 @@ public:
         Start_game->setGeometry(QRect(230, 400, 75, 23));
         Refresh_lobby = new QPushButton(Lobby);
         Refresh_lobby->setObjectName(QString::fromUtf8("Refresh_lobby"));
-        Refresh_lobby->setGeometry(QRect(330, 400, 75, 23));
+        Refresh_lobby->setGeometry(QRect(350, 400, 75, 23));
         Lobby_name = new QLabel(Lobby);
         Lobby_name->setObjectName(QString::fromUtf8("Lobby_name"));
         Lobby_name->setGeometry(QRect(290, 10, 61, 21));
