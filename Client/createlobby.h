@@ -51,12 +51,12 @@ private:
 
 public slots:
     void sockDisc();
-    void checkCorrectInputCreate();
+    void checkCorrectInput();
     void closeWindow();
     void drowElements();
     void signal();
     void createButtonPressed();
-    void enableCreateButton(QString text);
+    void enableCreateButton();
 
 };
 

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Authorization_t {
-    QByteArrayData data[10];
-    char stringdata0[134];
+    QByteArrayData data[9];
+    char stringdata0[129];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,16 +36,15 @@ QT_MOC_LITERAL(0, 0, 13), // "Authorization"
 QT_MOC_LITERAL(1, 14, 19), // "checkTheEnteredData"
 QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 18), // "enableSignInButton"
-QT_MOC_LITERAL(4, 54, 4), // "text"
-QT_MOC_LITERAL(5, 59, 19), // "signInButtonPressed"
-QT_MOC_LITERAL(6, 79, 25), // "registrationButtonPressed"
-QT_MOC_LITERAL(7, 105, 8), // "sockDisc"
-QT_MOC_LITERAL(8, 114, 12), // "drowElements"
-QT_MOC_LITERAL(9, 127, 6) // "signal"
+QT_MOC_LITERAL(4, 54, 19), // "signInButtonPressed"
+QT_MOC_LITERAL(5, 74, 25), // "registrationButtonPressed"
+QT_MOC_LITERAL(6, 100, 8), // "sockDisc"
+QT_MOC_LITERAL(7, 109, 12), // "drowElements"
+QT_MOC_LITERAL(8, 122, 6) // "signal"
 
     },
     "Authorization\0checkTheEnteredData\0\0"
-    "enableSignInButton\0text\0signInButtonPressed\0"
+    "enableSignInButton\0signInButtonPressed\0"
     "registrationButtonPressed\0sockDisc\0"
     "drowElements\0signal"
 };
@@ -66,16 +65,16 @@ static const uint qt_meta_data_Authorization[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    0,   49,    2, 0x0a /* Public */,
-       3,    1,   50,    2, 0x0a /* Public */,
-       5,    0,   53,    2, 0x0a /* Public */,
-       6,    0,   54,    2, 0x0a /* Public */,
-       7,    0,   55,    2, 0x0a /* Public */,
-       8,    0,   56,    2, 0x0a /* Public */,
-       9,    0,   57,    2, 0x0a /* Public */,
+       3,    0,   50,    2, 0x0a /* Public */,
+       4,    0,   51,    2, 0x0a /* Public */,
+       5,    0,   52,    2, 0x0a /* Public */,
+       6,    0,   53,    2, 0x0a /* Public */,
+       7,    0,   54,    2, 0x0a /* Public */,
+       8,    0,   55,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -92,7 +91,7 @@ void Authorization::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->checkTheEnteredData(); break;
-        case 1: _t->enableSignInButton((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->enableSignInButton(); break;
         case 2: _t->signInButtonPressed(); break;
         case 3: _t->registrationButtonPressed(); break;
         case 4: _t->sockDisc(); break;
@@ -101,6 +100,7 @@ void Authorization::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Authorization::staticMetaObject = { {

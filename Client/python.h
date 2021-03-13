@@ -1,9 +1,9 @@
 #ifndef PYTHON_H
 #define PYTHON_H
+
 #include <QVector>
 #include <QPoint>
 #include <QColor>
-
 
 class Python
 {

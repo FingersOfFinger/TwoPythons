@@ -2,6 +2,8 @@ release/authorization.o
 release/authorizationview.o
 release/createlobby.o
 release/createlobbyview.o
+release/deletelobby.o
+release/deletelobbyview.o
 release/gamewindow.o
 release/lobby.o
 release/main.o
@@ -13,6 +15,8 @@ release/moc_authorization.o
 release/moc_authorizationview.o
 release/moc_createlobby.o
 release/moc_createlobbyview.o
+release/moc_deletelobby.o
+release/moc_deletelobbyview.o
 release/moc_gamewindow.o
 release/moc_lobby.o
 release/moc_mainwindow.o

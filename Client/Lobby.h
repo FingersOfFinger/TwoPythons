@@ -2,7 +2,8 @@
 #define LOBBY_H
 
 #include <QWidget>
-#include "createlobby.h"
+#include "gamewindow.h"
+#include "deletelobby.h"
 #include "registration.h"
 #include "authorization.h"
 #include "createlobby.h"
@@ -38,8 +39,6 @@ public:
 
 private:
     Ui::Lobby *ui;
-    static const int WIDTH=500;
-    static const int HIGHT=180;
 
     QString login;
     QTcpSocket *socket;

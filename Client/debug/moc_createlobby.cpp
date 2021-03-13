@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CreateLobby_t {
-    QByteArrayData data[10];
-    char stringdata0[122];
+    QByteArrayData data[9];
+    char stringdata0[111];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,19 +35,17 @@ static const qt_meta_stringdata_CreateLobby_t qt_meta_stringdata_CreateLobby = {
 QT_MOC_LITERAL(0, 0, 11), // "CreateLobby"
 QT_MOC_LITERAL(1, 12, 8), // "sockDisc"
 QT_MOC_LITERAL(2, 21, 0), // ""
-QT_MOC_LITERAL(3, 22, 23), // "checkCorrectInputCreate"
-QT_MOC_LITERAL(4, 46, 11), // "closeWindow"
-QT_MOC_LITERAL(5, 58, 12), // "drowElements"
-QT_MOC_LITERAL(6, 71, 6), // "signal"
-QT_MOC_LITERAL(7, 78, 19), // "createButtonPressed"
-QT_MOC_LITERAL(8, 98, 18), // "enableCreateButton"
-QT_MOC_LITERAL(9, 117, 4) // "text"
+QT_MOC_LITERAL(3, 22, 17), // "checkCorrectInput"
+QT_MOC_LITERAL(4, 40, 11), // "closeWindow"
+QT_MOC_LITERAL(5, 52, 12), // "drowElements"
+QT_MOC_LITERAL(6, 65, 6), // "signal"
+QT_MOC_LITERAL(7, 72, 19), // "createButtonPressed"
+QT_MOC_LITERAL(8, 92, 18) // "enableCreateButton"
 
     },
-    "CreateLobby\0sockDisc\0\0checkCorrectInputCreate\0"
+    "CreateLobby\0sockDisc\0\0checkCorrectInput\0"
     "closeWindow\0drowElements\0signal\0"
-    "createButtonPressed\0enableCreateButton\0"
-    "text"
+    "createButtonPressed\0enableCreateButton"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +69,7 @@ static const uint qt_meta_data_CreateLobby[] = {
        5,    0,   52,    2, 0x0a /* Public */,
        6,    0,   53,    2, 0x0a /* Public */,
        7,    0,   54,    2, 0x0a /* Public */,
-       8,    1,   55,    2, 0x0a /* Public */,
+       8,    0,   55,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -80,7 +78,7 @@ static const uint qt_meta_data_CreateLobby[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -92,15 +90,16 @@ void CreateLobby::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sockDisc(); break;
-        case 1: _t->checkCorrectInputCreate(); break;
+        case 1: _t->checkCorrectInput(); break;
         case 2: _t->closeWindow(); break;
         case 3: _t->drowElements(); break;
         case 4: _t->signal(); break;
         case 5: _t->createButtonPressed(); break;
-        case 6: _t->enableCreateButton((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 6: _t->enableCreateButton(); break;
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject CreateLobby::staticMetaObject = { {

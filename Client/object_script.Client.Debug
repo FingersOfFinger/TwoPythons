@@ -2,6 +2,8 @@ debug/authorization.o
 debug/authorizationview.o
 debug/createlobby.o
 debug/createlobbyview.o
+debug/deletelobby.o
+debug/deletelobbyview.o
 debug/gamewindow.o
 debug/lobby.o
 debug/main.o
@@ -13,6 +15,8 @@ debug/moc_authorization.o
 debug/moc_authorizationview.o
 debug/moc_createlobby.o
 debug/moc_createlobbyview.o
+debug/moc_deletelobby.o
+debug/moc_deletelobbyview.o
 debug/moc_gamewindow.o
 debug/moc_lobby.o
 debug/moc_mainwindow.o

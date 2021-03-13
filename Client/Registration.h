@@ -36,8 +36,6 @@ public:
     ~Registration();
 
 private:
-    static const int WIDTH=500;
-    static const int HIGHT=180;
     void drowElements();
     QTcpSocket *socket;
     QByteArray Data;
@@ -57,7 +55,8 @@ private:
 
 public slots:
     void sockDisc();
-    void enableRegisterButton(QString text);
+    void signal();
+    void enableRegisterButton();
     void registerButtonPressed();
     void checkCorrectInput();
     void closeWindow();

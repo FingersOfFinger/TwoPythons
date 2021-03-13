@@ -30,8 +30,6 @@ public:
     ~CreateLobbyView();
 
 private:
-    QLabel *image;
-    QImage *i;
 
 public slots:
 

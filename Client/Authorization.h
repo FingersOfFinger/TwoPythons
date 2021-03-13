@@ -32,8 +32,6 @@ public:
     ~Authorization();
 
 private:
-    static const int WIDTH=500;
-    static const int HIGHT=180;
     QTcpSocket *socket;
     QByteArray Data;
 
@@ -50,7 +48,7 @@ private:
 
 public slots:
     void checkTheEnteredData();
-    void enableSignInButton(QString text);
+    void enableSignInButton();
     void signInButtonPressed();
     void registrationButtonPressed();
     void sockDisc();

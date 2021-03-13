@@ -1,11 +1,13 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
+
+#include "lobby.h"
 #include "QWidget"
 #include <QPainter>
 #include <QPushButton>
 #include <QLabel>
 #include <QDebug>
-#include<QTcpSocket>
+#include <QTcpSocket>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonParseError>
@@ -23,10 +25,11 @@ class GameWindow:public QWidget
      Q_OBJECT
 
 public:
-    GameWindow();
+    GameWindow(QTcpSocket*,QString);
     void keyPressEvent(QKeyEvent *)override;
 public slots:
     void sockConnect();
+    void closeGame();
 private:
     int DOT_WIDTH=40;
     int DOT_HIGHT=40;
@@ -37,6 +40,8 @@ private:
     void drowArea();
     void drowElements();
     void drowPythons();
+
+    QString login;
     QPushButton *buttExit;
     QLabel *score;
     QLabel *timer;
@@ -50,8 +55,6 @@ private:
     bool startGame=false;
     void drowFruits();
     QColor myColor;
-
-
 };
 
 #endif // GAMEWINDOW_H

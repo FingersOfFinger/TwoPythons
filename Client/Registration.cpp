@@ -5,6 +5,13 @@ Registration::Registration(QTcpSocket *inSocket,QWidget *parent) :
 {
     socket = inSocket;
     drowElements();
+    signal();
+}
+
+void Registration::signal()
+{
+    connect(cancelButton, SIGNAL(clicked(bool)), this, SLOT(closeWindow()));
+    connect(registerButton, SIGNAL(clicked(bool)), this, SLOT(registerButtonPressed()));
 
     connect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
     connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));

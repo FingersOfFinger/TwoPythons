@@ -13,8 +13,8 @@ void Authorization::signal()
     connect(signInButton, SIGNAL(clicked(bool)), this, SLOT(signInButtonPressed()));
     connect(registrationlButton, SIGNAL(clicked(bool)), this, SLOT(registrationButtonPressed()));
 
-    connect(loginEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton(QString)));
-    connect(passwordEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton(QString)));
+    connect(loginEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton()));
+    connect(passwordEdit, SIGNAL(textChanged(QString)), this, SLOT(enableSignInButton()));
 
     connect(socket,SIGNAL(readyRead()),this,SLOT(checkTheEnteredData()));
     connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));

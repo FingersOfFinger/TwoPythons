@@ -10,10 +10,11 @@ void Authorization::drowElements()
 {
     this->setWindowTitle("Авторизация");
     this->setWindowIcon(QIcon("image/window.png"));
-    this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
+    this->setFixedSize(768, 432);
+    //this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
 
     image = new QLabel(this);
-    i = new QImage("image/background2.png");
+    i = new QImage("image/background.jpg");
     QImage img = i->scaled(QSize(this->width(),this->height()), Qt::IgnoreAspectRatio);
     image->show();
     image->resize(QSize(this->width(),this->height()));
@@ -60,7 +61,7 @@ void Authorization::drowElements()
     setLayout(mainLayout);
 }
 
-void Authorization::enableSignInButton(QString text)
+void Authorization::enableSignInButton()
 {
     signInButton->setEnabled(!loginEdit->text().isEmpty() && !passwordEdit->text().isEmpty());
 }

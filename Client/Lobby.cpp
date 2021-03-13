@@ -33,21 +33,24 @@ void Lobby::receiveLobby()
     if (docError.errorString() == "no error occurred")
     {
         //Start
-        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStartLobby") )
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStartLobby"))
         {
             disconnect(socket,SIGNAL(readyRead()),this,SLOT(receiveLobby()));
             socket->waitForDisconnected(50);
-            //
+
+            GameWindow *openGame = new GameWindow(socket,login);
+            this->hide();
+            openGame->show();
         }
         //Stat
-        else if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStatGame"))
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStatGame"))
         {
             QStandardItemModel *model = new QStandardItemModel(nullptr);
             model->setHorizontalHeaderLabels(QStringList()<<"Победитель"<<"Проигравший"<<"Счёт");
-            QList<QStandardItem *> items;
             QJsonArray docAr = doc.object().value("userScore").toArray();
             for (int i=0; i<docAr.count(); i++)
             {
+                QList<QStandardItem *> items;
                 QStandardItem *winner = new QStandardItem(docAr[i].toObject().value("winner").toString());
                 items.append(winner);
                 QStandardItem *loser = new QStandardItem(docAr[i].toObject().value("loser").toString());
@@ -58,30 +61,25 @@ void Lobby::receiveLobby()
             }
             ui->tableView->setModel(model);
         }
-        //Delete
-        else if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveDeleteLobby") && (doc.object().value("access").toString() == "true"))
-        {
-            //
-        }
-        //Exit
-        else if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveExitLobby") && (doc.object().value("access").toString() == "true"))
-        {
-           //
-        }
         //Enter
-        else if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveEnterLobby") && (doc.object().value("access").toString() == "true"))
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveEnterLobby") && (doc.object().value("access").toString() == "true"))
         {
-            //
+            QMessageBox::information(this,"Информация","Вы вошли в лобби!");
+        }
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveEnterLobby") && (doc.object().value("access").toString() == "false"))
+        {
+            QMessageBox::critical(this, "Информация","Вы уже состоите в лобби!");
         }
         //Get
-        else if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveGetLobby"))
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveGetLobby"))
         {
             QJsonArray docAr = doc.object().value("lobby").toArray();
             QStandardItemModel *model = new QStandardItemModel(nullptr);
-            QList<QStandardItem *> items;
+
             model->setHorizontalHeaderLabels(QStringList()<<"Id"<<"Название"<<"Создатель");
             for (int i=0; i<docAr.count(); i++)
             {
+                QList<QStandardItem *> items;
                 QStandardItem *id = new QStandardItem(docAr[i].toObject().value("id").toString());
                 items.append(id);
                 QStandardItem *name = new QStandardItem(docAr[i].toObject().value("name").toString());
@@ -92,9 +90,14 @@ void Lobby::receiveLobby()
             }
             ui->tableView->setModel(model);
         }
-        else
+        //Exit
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveExitLobby") && (doc.object().value("access").toString() == "true"))
         {
-            QMessageBox::information(this, "Информация","Не выбрано лобби!");
+           QMessageBox::information(this,"Информация","Вы вышли из лобби!");
+        }
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveExitLobby") && (doc.object().value("access").toString() == "false"))
+        {
+            QMessageBox::critical(this, "Информация","Вы не состоите в лобби!");
         }
     }
     else
@@ -106,14 +109,22 @@ void Lobby::receiveLobby()
 void Lobby::startGame()
 {
     int id_number = ui->tableView->selectionModel()->currentIndex().row();
-    QJsonArray docAr = doc.object().value("lobby").toArray();
-    std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
-    qDebug() << docAr[id_number].toObject().value("id").toString();
-    char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"startGame\",\"id\":\""+id+"\"}\r\n\r\n";
-    strcpy(request,request2.c_str());
-    socket->write(request);
-    socket->waitForBytesWritten(50);
+
+    if (id_number != -1)
+    {
+        QJsonArray docAr = doc.object().value("lobby").toArray();
+        std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+
+        char request[100];
+        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"startGame\",\"id\":\""+id+"\"}\r\n\r\n";
+        strcpy(request,request2.c_str());
+        socket->write(request);
+        socket->waitForBytesWritten(50);
+    }
+    else
+    {
+        QMessageBox::critical(this,"Информация","Лобби не выделено!");
+    }
 }
 
 void Lobby::statGame()
@@ -122,25 +133,50 @@ void Lobby::statGame()
     std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"getStatGame\",\"login\":\""+login.toStdString()+"\"}\r\n\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
-    socket->waitForBytesWritten(50);
+    socket->waitForBytesWritten(50); 
 }
 
 void Lobby::deleteLobby()
 {
-    char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"deleteLobby\"}\r\n\r\n";
-    strcpy(request,request2.c_str());
-    socket->write(request);
-    socket->waitForBytesWritten(50);
+    int id_number = ui->tableView->selectionModel()->currentIndex().row();
+
+    if (id_number != -1)
+    {
+        QJsonArray docAr = doc.object().value("lobby").toArray();
+        QString name = docAr[id_number].toObject().value("name").toString();
+        std::string id = +docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+
+        disconnect(socket,SIGNAL(readyRead()),this,SLOT(receiveLobby()));
+        socket->waitForDisconnected(50);
+        DeleteLobby *openDeleteLobby = new DeleteLobby(socket,id,name,login);
+        this->hide();
+        openDeleteLobby->show();
+    }
+    else
+    {
+        QMessageBox::critical(this,"Информация","Лобби не выделено!");
+    }
 }
 
 void Lobby::exitLobby()
 {
-    char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"exitLobby\"}\r\n\r\n";
-    strcpy(request,request2.c_str());
-    socket->write(request);
-    socket->waitForBytesWritten(50);
+    int id_number = ui->tableView->selectionModel()->currentIndex().row();
+
+    if (id_number != -1)
+    {
+        QJsonArray docAr = doc.object().value("lobby").toArray();
+        std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+
+        char request[100];
+        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"exitLobby\",\"id\":\""+id+"\"}\r\n\r\n";
+        strcpy(request,request2.c_str());
+        socket->write(request);
+        socket->waitForBytesWritten(50);
+    }
+    else
+    {
+        QMessageBox::critical(this,"Информация","Лобби не выделено!");
+    }
 }
 
 void Lobby::createLobby()
@@ -154,11 +190,23 @@ void Lobby::createLobby()
 
 void Lobby::enterLobby()
 {
-    char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"enterLobby\"}\r\n\r\n";
-    strcpy(request,request2.c_str());
-    socket->write(request);
-    socket->waitForBytesWritten(50);
+    int id_number = ui->tableView->selectionModel()->currentIndex().row();
+
+    if (id_number != -1)
+    {
+        QJsonArray docAr = doc.object().value("lobby").toArray();
+        std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+
+        char request[100];
+        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"enterLobby\",\"id\":\""+id+"\"}\r\n\r\n";
+        strcpy(request,request2.c_str());
+        socket->write(request);
+        socket->waitForBytesWritten(50);
+    }
+    else
+    {
+        QMessageBox::critical(this,"Информация","Лобби не выделено!");
+    }
 }
 
 void Lobby::refreshLobby()

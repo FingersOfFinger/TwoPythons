@@ -14,10 +14,10 @@ void CreateLobby::signal()
     connect(createButton, SIGNAL(clicked(bool)), this, SLOT(createButtonPressed()));
     connect(cancelButton, SIGNAL(clicked(bool)), this, SLOT(closeWindow()));
 
-    connect(nameLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton(QString)));
-    connect(ownerLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton(QString)));
+    connect(nameLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton()));
+    connect(ownerLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton()));
 
-    connect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInputCreate()));
+    connect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
     connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));
 }
 
@@ -33,7 +33,7 @@ void CreateLobby::createButtonPressed()
     socket->waitForBytesWritten(50);
 }
 
-void CreateLobby::checkCorrectInputCreate()
+void CreateLobby::checkCorrectInput()
 {
     if(socket->waitForConnected(50))
     {
@@ -58,12 +58,11 @@ void CreateLobby::checkCorrectInputCreate()
             QMessageBox::information(this, "Информация","Ошибка с форматом передачи данных: "+docError.errorString());
         }
     }
-
 }
 
 void CreateLobby::closeWindow()
 {
-    disconnect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInputCreate()));
+    disconnect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
     socket->waitForDisconnected(50);
     Lobby *closeLobby = new Lobby(socket,login);
     this->hide();

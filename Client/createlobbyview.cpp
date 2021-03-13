@@ -10,10 +10,11 @@ void CreateLobby::drowElements()
 {
     this->setWindowTitle("Создать лобби");
     this->setWindowIcon(QIcon("image/window.png"));
-    this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
+    this->setFixedSize(640, 360);
+    //this->setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
 
     image = new QLabel(this);
-    i = new QImage("image/background2.png");
+    i = new QImage("image/background.jpg");
     QImage img = i->scaled(QSize(this->width(),height()), Qt::IgnoreAspectRatio);
     image->show();
     image->resize(QSize(this->width(),height()));
@@ -21,21 +22,23 @@ void CreateLobby::drowElements()
 
     nameLine = new QLineEdit(this);
     //nameLine->setValidator(new QRegExpValidator(QRegExp("[a-zA-Zа-яА-Я]+")));
-    nameLine->setMaxLength(15);
-    nameLine->setFixedSize(160, 20);
+    nameLine->setMaxLength(30);
+    nameLine->setFont(QFont("Georgia", 15, -1, false));
+    nameLine->setFixedSize(325, 40);
 
     ownerLine = new QLineEdit(this);
-    ownerLine->setValidator(new QRegExpValidator(QRegExp("[a-zA-Zа-яА-Я]+")));
-    ownerLine->setMaxLength(15);
-    ownerLine->setFixedSize(160, 20);
+    ownerLine->setValidator(new QRegExpValidator(QRegExp("[a-zA-Z]+")));
+    ownerLine->setMaxLength(30);
+    ownerLine->setFont(QFont("Georgia", 15, -1, false));
+    ownerLine->setFixedSize(325, 40);
 
-    nameLabel = new QLabel("<font face = Georgia size = 5>Название: </font>");
-    ownerLabel = new QLabel("<font face = Georgia size = 5>Создатель:</font>");
+    nameLabel = new QLabel("<font face = Georgia size = 6>Название: </font>");
+    ownerLabel = new QLabel("<font face = Georgia size = 6>Создатель:</font>");
 
     createButton = new QPushButton();
     createButton->setEnabled(false);
     createButton->setFlat(true);
-    createButton->setIcon(QPixmap("image/register_button"));
+    createButton->setIcon(QPixmap("image/create_button"));
     createButton->setIconSize(QSize(150, 30));
     createButton->setShortcut(QKeySequence(Qt::Key_Return));
 
@@ -45,9 +48,9 @@ void CreateLobby::drowElements()
     cancelButton->setIcon(QPixmap("image/cancel_button"));
     cancelButton->setIconSize(QSize(150, 30));
 
-    QVBoxLayout *registerButtons = new QVBoxLayout();
-    registerButtons->addWidget(cancelButton);
-    registerButtons->addWidget(createButton);
+    QVBoxLayout *createButtons = new QVBoxLayout();
+    createButtons->addWidget(cancelButton);
+    createButtons->addWidget(createButton);
 
     QFormLayout *labelLayout = new QFormLayout();
     labelLayout->addRow(nameLabel, nameLine);
@@ -56,18 +59,12 @@ void CreateLobby::drowElements()
 
     QGridLayout *mainLayout = new QGridLayout();
     mainLayout->addLayout(labelLayout,1,0);
-    mainLayout->addLayout(registerButtons,1,1,Qt::AlignRight);
+    mainLayout->addLayout(createButtons,1,1,Qt::AlignRight);
 
     setLayout(mainLayout);
-
-    connect(createButton, SIGNAL(clicked(bool)), this, SLOT(createButtonPressed()));
-    connect(cancelButton, SIGNAL(clicked(bool)), this, SLOT(closeWindow()));
-
-    connect(nameLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton(QString)));
-    connect(ownerLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton(QString)));
 }
 
-void CreateLobby::enableCreateButton(QString text)
+void CreateLobby::enableCreateButton()
 {
     createButton->setEnabled(!nameLine->text().isEmpty() && !ownerLine->text().isEmpty());
 }
