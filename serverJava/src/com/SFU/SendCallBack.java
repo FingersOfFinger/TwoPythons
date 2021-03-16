@@ -12,7 +12,7 @@ public class SendCallBack {
 
     public static void sendCallbackAuthorization(boolean access, Socket socket) throws IOException {
         out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        out.write("{\"globalType\":\"connection\",\"type\":\" authorization\",\"access\":\"" + Boolean.toString(access) + "\"}");
+        out.write("{\"globalType\":\"connection\",\"type\":\"authorization\",\"access\":\"" + Boolean.toString(access) + "\"}");
         out.flush();
     }
 
