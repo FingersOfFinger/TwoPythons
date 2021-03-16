@@ -98,6 +98,7 @@ public class ServerClientLobbyThread extends Thread{
                     pars(word);
                 } catch (ParseException|IOException e) {
                     System.out.println(e);
+                    Server.usersOnline.remove(login);
                 }
             }
         } catch (Exception e) {
