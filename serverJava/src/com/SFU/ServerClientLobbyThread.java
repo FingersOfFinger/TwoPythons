@@ -11,38 +11,23 @@ import java.util.Vector;
 public class ServerClientLobbyThread extends Thread{
     public Socket socket;
     public BufferedReader in;
-    private String login;
+    private final String login;
     private final JSONObject json;
-    private DbHandler dbHandler = DbHandler.getInstance();
+    private final DbHandler dbHandler = DbHandler.getInstance();
     ServerClientLobbyThread(Socket inSocket,JSONObject inJson,String inLogin){socket=inSocket;json=inJson;login=inLogin;}
     private void pars(String word) throws ParseException, IOException {
 
         Object obj = new JSONParser().parse(word);
         JSONObject json = (JSONObject) obj;
-        if (((String) json.get("globalType")).equals("lobby")) {
+        if (json.get("globalType").equals("lobby")) {
             switch ((String) json.get("type")) {
-                case ("createLobby"):
-                    createLobby(json);
-                    break;
-                case("getLobby"):
-                    getLobby();
-                    break;
-                case("deleteLobby"):
-                    deleteLobby(Long.parseLong((String) json.get("id")),(String)json.get("login"));
-                    break;
-                case("enterLobby"):
-                    enterLobby(Long.parseLong((String) json.get("id")));
-                    break;
-                case("exitLobby"):
-                    exitLobby(Long.parseLong((String) json.get("id")));
-                    break;
-                case ("startGame"):
-                    startGame(Long.parseLong((String) json.get("id")));
-                    break;
-                case("getStatGame"):
-                    getStatGame((String)json.get("login"));
-
-
+                case ("createLobby") -> createLobby(json);
+                case ("getLobby") -> getLobby();
+                case ("deleteLobby") -> deleteLobby(Long.parseLong((String) json.get("id")), (String) json.get("login"));
+                case ("enterLobby") -> enterLobby(Long.parseLong((String) json.get("id")));
+                case ("exitLobby") -> exitLobby(Long.parseLong((String) json.get("id")));
+                case ("startGame") -> startGame(Long.parseLong((String) json.get("id")));
+                case ("getStatGame") -> getStatGame((String) json.get("login"));
             }
         }
 
@@ -58,8 +43,8 @@ public class ServerClientLobbyThread extends Thread{
         String name=(String)json.get("name");
         lobby.setName(name);
         String socketPort=String.valueOf(Server.getPort(socket.getRemoteSocketAddress()));
-        lobby.setId(getHash(String.valueOf(Server.allLobby.size()+1)+name+socketPort+(String)json.get("owner")));
-        System.out.println(getHash(String.valueOf(Server.allLobby.size()+1)+name+socketPort+(String)json.get("owner")));
+        lobby.setId(getHash((Server.allLobby.size() + 1) +name+socketPort+ json.get("owner")));
+        System.out.println(getHash((Server.allLobby.size() + 1) +name+socketPort+ json.get("owner")));
         lobby.setOwner((String)json.get("owner"));
         lobby.setIdPreparation(Server.getPort(socket.getRemoteSocketAddress()));
         LobbyManager.addLobby(lobby);
@@ -71,26 +56,14 @@ public class ServerClientLobbyThread extends Thread{
 
     }
     private void deleteLobby(Long id,String login) throws IOException {
-        if(LobbyManager.deleteLobby(id,login)){
-            SendCallBack.sendCallbackDeleteLobby(true,socket);
-        }else{
-            SendCallBack.sendCallbackDeleteLobby(false,socket);
-        }
+        SendCallBack.sendCallbackDeleteLobby(LobbyManager.deleteLobby(id, login),socket);
 
     }
     private void enterLobby(Long id) throws IOException {
-        if(LobbyManager.enterLobby(id,Server.getPort(socket.getRemoteSocketAddress()))){
-            SendCallBack.sendCallbackEnterLobby(true,socket);
-        }else{
-            SendCallBack.sendCallbackEnterLobby(false,socket);
-        }
+        SendCallBack.sendCallbackEnterLobby(LobbyManager.enterLobby(id, Server.getPort(socket.getRemoteSocketAddress())),socket);
     }
     private void exitLobby(Long id) throws IOException {
-        if(LobbyManager.exitLobby(id,Server.getPort(socket.getRemoteSocketAddress()))){
-            SendCallBack.sendCallbackExitLobby(true,socket);
-        }else{
-            SendCallBack.sendCallbackExitLobby(false,socket);
-        }
+        SendCallBack.sendCallbackExitLobby(LobbyManager.exitLobby(id, Server.getPort(socket.getRemoteSocketAddress())),socket);
 
     }
     private void startGame(Long id){
@@ -130,9 +103,6 @@ public class ServerClientLobbyThread extends Thread{
         } catch (Exception e) {
             Server.usersOnline.remove(login);
             System.out.println();
-
-        } finally {
-
 
         }
     }
