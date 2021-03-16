@@ -22,7 +22,7 @@ void Registration::registerButtonPressed()
     char request[100];
     std::string login = loginLine->text().toStdString();
     std::string password = passwordLine->text().toStdString();
-    std::string request2 = "{\"globalType\":\"connection\",\"type\":\"registration\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n\r\n";
+    std::string request2 = "{\"globalType\":\"connection\",\"type\":\"registration\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
     socket->waitForBytesWritten(50);
@@ -67,11 +67,12 @@ void Registration::closeWindow()
 
 void Registration::sockDisc()
 {
-    socket->deleteLater();
+    socket->disconnect();
 }
 
 Registration::~Registration()
 {
+    sockDisc();
     delete i;
     delete image;
 }

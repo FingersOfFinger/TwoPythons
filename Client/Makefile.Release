@@ -1100,7 +1100,8 @@ release/moc_createlobby.cpp: createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -1109,9 +1110,13 @@ release/moc_createlobby.cpp: createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -1256,11 +1261,9 @@ release/moc_createlobby.cpp: createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -1358,13 +1361,6 @@ release/moc_createlobby.cpp: createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -1373,13 +1369,8 @@ release/moc_createlobby.cpp: createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -1399,8 +1390,17 @@ release/moc_createlobby.cpp: createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h \
 		createlobby.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -1512,7 +1512,8 @@ release/moc_createlobbyview.cpp: createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -1521,9 +1522,13 @@ release/moc_createlobbyview.cpp: createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -1668,11 +1673,9 @@ release/moc_createlobbyview.cpp: createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -1770,13 +1773,6 @@ release/moc_createlobbyview.cpp: createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -1785,13 +1781,8 @@ release/moc_createlobbyview.cpp: createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -1811,8 +1802,17 @@ release/moc_createlobbyview.cpp: createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/Maximus/Documents/GitHub/TwoPythons/Client/release/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/Users/Maximus/Documents/GitHub/TwoPythons/Client -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtNetwork -IC:/Qt/5.15.2/mingw81_64/include/QtCore -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include createlobbyview.h -o release\moc_createlobbyview.cpp
@@ -1922,7 +1922,8 @@ release/moc_deletelobby.cpp: deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -1931,9 +1932,13 @@ release/moc_deletelobby.cpp: deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -2078,11 +2083,9 @@ release/moc_deletelobby.cpp: deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -2180,13 +2183,6 @@ release/moc_deletelobby.cpp: deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -2195,13 +2191,8 @@ release/moc_deletelobby.cpp: deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -2221,8 +2212,17 @@ release/moc_deletelobby.cpp: deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h \
 		createlobby.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -2334,7 +2334,8 @@ release/moc_deletelobbyview.cpp: deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -2343,9 +2344,13 @@ release/moc_deletelobbyview.cpp: deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -2490,11 +2495,9 @@ release/moc_deletelobbyview.cpp: deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -2592,14 +2595,6 @@ release/moc_deletelobbyview.cpp: deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		registration.h \
-		registrationview.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -2608,8 +2603,8 @@ release/moc_deletelobbyview.cpp: deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		authorization.h \
-		authorizationview.h \
+		registration.h \
+		registrationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -2634,6 +2629,11 @@ release/moc_deletelobbyview.cpp: deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		createlobby.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -2744,7 +2744,8 @@ release/moc_gamewindow.cpp: gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -2753,9 +2754,13 @@ release/moc_gamewindow.cpp: gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -2900,11 +2905,9 @@ release/moc_gamewindow.cpp: gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -3002,13 +3005,6 @@ release/moc_gamewindow.cpp: gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -3017,13 +3013,8 @@ release/moc_gamewindow.cpp: gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -3043,8 +3034,17 @@ release/moc_gamewindow.cpp: gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h \
 		createlobby.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -3154,9 +3154,8 @@ release/moc_lobby.cpp: lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
-		lobby.h \
-		deletelobby.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -3424,13 +3423,8 @@ release/moc_lobby.cpp: lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -3450,13 +3444,19 @@ release/moc_lobby.cpp: lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
-		createlobby.h \
+		lobby.h \
+		gamewindow.h \
 		python.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h \
+		createlobby.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/Maximus/Documents/GitHub/TwoPythons/Client/release/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/Users/Maximus/Documents/GitHub/TwoPythons/Client -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtNetwork -IC:/Qt/5.15.2/mingw81_64/include/QtCore -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include lobby.h -o release\moc_lobby.cpp
@@ -5338,7 +5338,8 @@ release/createlobby.o: createlobby.cpp createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -5347,9 +5348,13 @@ release/createlobby.o: createlobby.cpp createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -5494,11 +5499,9 @@ release/createlobby.o: createlobby.cpp createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -5596,13 +5599,6 @@ release/createlobby.o: createlobby.cpp createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -5611,13 +5607,8 @@ release/createlobby.o: createlobby.cpp createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -5637,8 +5628,17 @@ release/createlobby.o: createlobby.cpp createlobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\createlobby.o createlobby.cpp
 
 release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
@@ -5747,7 +5747,8 @@ release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -5756,9 +5757,13 @@ release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -5903,11 +5908,9 @@ release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -6005,13 +6008,6 @@ release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -6020,13 +6016,8 @@ release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -6046,8 +6037,17 @@ release/createlobbyview.o: createlobbyview.cpp createlobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\createlobbyview.o createlobbyview.cpp
 
 release/deletelobby.o: deletelobby.cpp deletelobby.h \
@@ -6155,7 +6155,8 @@ release/deletelobby.o: deletelobby.cpp deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -6164,9 +6165,13 @@ release/deletelobby.o: deletelobby.cpp deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -6311,11 +6316,9 @@ release/deletelobby.o: deletelobby.cpp deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -6413,14 +6416,6 @@ release/deletelobby.o: deletelobby.cpp deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		registration.h \
-		registrationview.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -6429,8 +6424,8 @@ release/deletelobby.o: deletelobby.cpp deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		authorization.h \
-		authorizationview.h \
+		registration.h \
+		registrationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -6455,6 +6450,11 @@ release/deletelobby.o: deletelobby.cpp deletelobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		createlobby.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\deletelobby.o deletelobby.cpp
 
@@ -6564,7 +6564,8 @@ release/deletelobbyview.o: deletelobbyview.cpp deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -6573,9 +6574,13 @@ release/deletelobbyview.o: deletelobbyview.cpp deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -6720,11 +6725,9 @@ release/deletelobbyview.o: deletelobbyview.cpp deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -6822,14 +6825,6 @@ release/deletelobbyview.o: deletelobbyview.cpp deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		registration.h \
-		registrationview.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -6838,8 +6833,8 @@ release/deletelobbyview.o: deletelobbyview.cpp deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		authorization.h \
-		authorizationview.h \
+		registration.h \
+		registrationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -6864,6 +6859,11 @@ release/deletelobbyview.o: deletelobbyview.cpp deletelobbyview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		createlobby.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\deletelobbyview.o deletelobbyview.cpp
 
@@ -6972,7 +6972,8 @@ release/gamewindow.o: gamewindow.cpp gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		deletelobby.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -7240,13 +7241,8 @@ release/gamewindow.o: gamewindow.cpp gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -7266,8 +7262,12 @@ release/gamewindow.o: gamewindow.cpp gamewindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		deletelobby.h \
 		createlobby.h \
 		python.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
@@ -7379,7 +7379,8 @@ release/lobby.o: lobby.cpp lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
-		gamewindow.h \
+		authorization.h \
+		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
@@ -7388,9 +7389,13 @@ release/lobby.o: lobby.cpp lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/5.15.2/mingw81_64/include/QtNetwork/qtcpsocket.h \
@@ -7535,11 +7540,9 @@ release/lobby.o: lobby.cpp lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcoreversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qabstracttextdocumentlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qglyphrun.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qrawfont.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qfontdatabase.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextdocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessible.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qaccessiblebridge.h \
@@ -7637,13 +7640,6 @@ release/lobby.o: lobby.cpp lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtguiversion.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QColor \
-		python.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		deletelobby.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGridLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
@@ -7652,13 +7648,8 @@ release/lobby.o: lobby.cpp lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		registration.h \
 		registrationview.h \
-		authorization.h \
-		authorizationview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
@@ -7678,8 +7669,17 @@ release/lobby.o: lobby.cpp lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFormLayout \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qformlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLayout \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QFileDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qfiledialog.h \
+		gamewindow.h \
+		python.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		deletelobby.h \
 		createlobby.h \
 		ui_lobby.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QVariant \

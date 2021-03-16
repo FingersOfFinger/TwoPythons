@@ -32,13 +32,10 @@ public:
 
 private:
     QString login;
-    QString id;
     QLineEdit *nameLine;
-    QLineEdit *ownerLine;
     QPushButton *createButton;
     QPushButton *cancelButton;
     QLabel *nameLabel;
-    QLabel *ownerLabel;
 
     QJsonDocument doc;
     QJsonParseError docError;

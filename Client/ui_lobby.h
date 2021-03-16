@@ -60,7 +60,7 @@ public:
         Refresh_lobby->setGeometry(QRect(350, 400, 75, 23));
         Lobby_name = new QLabel(Lobby);
         Lobby_name->setObjectName(QString::fromUtf8("Lobby_name"));
-        Lobby_name->setGeometry(QRect(290, 10, 61, 21));
+        Lobby_name->setGeometry(QRect(300, 10, 61, 21));
         QFont font;
         font.setPointSize(12);
         Lobby_name->setFont(font);

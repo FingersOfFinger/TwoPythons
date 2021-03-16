@@ -15,7 +15,6 @@ void CreateLobby::signal()
     connect(cancelButton, SIGNAL(clicked(bool)), this, SLOT(closeWindow()));
 
     connect(nameLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton()));
-    connect(ownerLine, SIGNAL(textChanged(QString)), this, SLOT(enableCreateButton()));
 
     connect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
     connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));
@@ -23,11 +22,9 @@ void CreateLobby::signal()
 
 void CreateLobby::createButtonPressed()
 {
-    id = "1";
     std::string name = nameLine->text().toStdString();
-    std::string owner = ownerLine->text().toStdString();
     char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"createLobby\",\"name\":\""+name+"\",\"id\":\""+id.toStdString()+"\",\"owner\":\""+owner+"\"}\r\n\r\n";
+    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"createLobby\",\"name\":\""+name+"\",\"owner\":\""+login.toStdString()+"\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
     socket->waitForBytesWritten(50);
@@ -71,10 +68,10 @@ void CreateLobby::closeWindow()
 
 void CreateLobby::sockDisc()
 {
-    socket->deleteLater();
+    socket->disconnect();
 }
 
 CreateLobby ::~CreateLobby()
 {
-
+    sockDisc();
 }

@@ -17,7 +17,7 @@ GameWindow::GameWindow(QTcpSocket *inSocket, QString Login)
     connect(buttExit, SIGNAL(clicked(bool)), this, SLOT(closeGame()));
 
     char request[100];
-    std::string request2="{\"globalType\":\"connection\",\"type\":\"test\"}\r\n\r\n";
+    std::string request2="{\"globalType\":\"connection\",\"type\":\"test\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
 
@@ -31,16 +31,16 @@ void GameWindow::keyPressEvent(QKeyEvent *event)
     int key=event->key();
     switch (key) {
     case Qt::Key_Left:
-        strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"left\"}\r\n\r\n";
+        strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"left\"}\r\n";
         break;
     case Qt::Key_Right:
-        strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"right\"}\r\n\r\n";
+        strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"right\"}\r\n";
         break;
     case Qt::Key_Down:
-         strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"down\"}\r\n\r\n";
+         strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"down\"}\r\n";
         break;
     case Qt::Key_Up:
-        strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"up\"}\r\n\r\n";
+        strCallback="{\"globalType\":\"game\",\"type\":\"setDirectionPython\",\"directionPython\":\"up\"}\r\n";
         break;
     }
     strcpy(str,strCallback.c_str());
@@ -200,4 +200,14 @@ void GameWindow::drowWindow()
     drowArea();
     drowFruits();
     drowPythons();
+}
+
+void GameWindow::sockDisc()
+{
+    socket->disconnect();
+}
+
+GameWindow::~GameWindow()
+{
+    sockDisc();
 }

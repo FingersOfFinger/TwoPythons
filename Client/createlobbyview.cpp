@@ -26,14 +26,7 @@ void CreateLobby::drowElements()
     nameLine->setFont(QFont("Georgia", 15, -1, false));
     nameLine->setFixedSize(325, 40);
 
-    ownerLine = new QLineEdit(this);
-    ownerLine->setValidator(new QRegExpValidator(QRegExp("[a-zA-Z]+")));
-    ownerLine->setMaxLength(30);
-    ownerLine->setFont(QFont("Georgia", 15, -1, false));
-    ownerLine->setFixedSize(325, 40);
-
     nameLabel = new QLabel("<font face = Georgia size = 6>Название: </font>");
-    ownerLabel = new QLabel("<font face = Georgia size = 6>Создатель:</font>");
 
     createButton = new QPushButton();
     createButton->setEnabled(false);
@@ -54,7 +47,6 @@ void CreateLobby::drowElements()
 
     QFormLayout *labelLayout = new QFormLayout();
     labelLayout->addRow(nameLabel, nameLine);
-    labelLayout->addRow(ownerLabel, ownerLine);
     labelLayout->setLabelAlignment(Qt::AlignRight);
 
     QGridLayout *mainLayout = new QGridLayout();
@@ -66,7 +58,7 @@ void CreateLobby::drowElements()
 
 void CreateLobby::enableCreateButton()
 {
-    createButton->setEnabled(!nameLine->text().isEmpty() && !ownerLine->text().isEmpty());
+    createButton->setEnabled(!nameLine->text().isEmpty());
 }
 
 CreateLobbyView ::~CreateLobbyView()

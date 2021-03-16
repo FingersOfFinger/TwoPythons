@@ -31,7 +31,7 @@ void Authorization::signInButtonPressed()
     char request[100];
     std::string login = loginEdit->text().toStdString();
     std::string password = passwordEdit->text().toStdString();
-    std::string request2 = "{\"globalType\":\"connection\",\"type\":\"authorization\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n\r\n";
+    std::string request2 = "{\"globalType\":\"connection\",\"type\":\"authorization\",\"login\":\""+login+"\",\"password\":\""+password+"\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
     socket->waitForBytesWritten(50);
@@ -39,18 +39,10 @@ void Authorization::signInButtonPressed()
 
 void Authorization::checkTheEnteredData()
 {
-    disconnect(socket,SIGNAL(readyRead()),this,SLOT(checkTheEnteredData()));
-    socket->waitForDisconnected(50);
-    QMessageBox::information(this,"Информация","Добро пожаловать, "+loginEdit->text()+"!");
-    Lobby *openLobby = new Lobby(socket,loginEdit->text());
-    this->hide();
-    openLobby->show();
-
     Data = socket->readAll();
     qDebug() << Data;
     doc = QJsonDocument::fromJson(Data, &docError);
 
-    /*
     if (docError.errorString() == "no error occurred")
     {
         if ((doc.object().value("globalType").toString() == "connection") && (doc.object().value("type").toString() == "authorization") && (doc.object().value("access").toString() == "true"))
@@ -71,7 +63,6 @@ void Authorization::checkTheEnteredData()
     {
         QMessageBox::information(this, "Информация","Ошибка с форматом передачи данных: "+docError.errorString());
     }
-    */
 }
 
 void Authorization::registrationButtonPressed()
@@ -85,10 +76,10 @@ void Authorization::registrationButtonPressed()
 
 void Authorization::sockDisc()
 {
-    socket->deleteLater();
+    socket->disconnect();
 }
 
 Authorization ::~Authorization()
 {
-
+    sockDisc();
 }

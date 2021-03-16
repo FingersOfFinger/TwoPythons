@@ -19,6 +19,7 @@
 #include <QColor>
 #include "python.h"
 #include <QApplication>
+#include "QMessageBox"
 
 class GameWindow:public QWidget
 {
@@ -26,8 +27,10 @@ class GameWindow:public QWidget
 
 public:
     GameWindow(QTcpSocket*,QString);
+    ~GameWindow();
     void keyPressEvent(QKeyEvent *)override;
 public slots:
+    void sockDisc();
     void sockConnect();
     void closeGame();
 private:

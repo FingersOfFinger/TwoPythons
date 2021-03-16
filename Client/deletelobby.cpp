@@ -23,7 +23,7 @@ void DeleteLobby::signal()
 void DeleteLobby::deleteButtonPressed()
 {
     char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"deleteLobby\",\"id\":\""+id+"\",\"login\":\""+login.toStdString()+"\"}\r\n\r\n";
+    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"deleteLobby\",\"id\":\""+id+"\",\"login\":\""+login.toStdString()+"\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
     socket->waitForBytesWritten(50);
@@ -71,10 +71,10 @@ void DeleteLobby::closeWindow()
 
 void DeleteLobby::sockDisc()
 {
-    socket->deleteLater();
+    socket->disconnect();
 }
 
 DeleteLobby ::~DeleteLobby()
 {
-
+    sockDisc();
 }

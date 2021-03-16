@@ -59,7 +59,7 @@
   <widget class="QLabel" name="Lobby_name">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>300</x>
      <y>10</y>
      <width>61</width>
      <height>21</height>

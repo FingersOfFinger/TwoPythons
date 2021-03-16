@@ -6,11 +6,15 @@ Lobby::Lobby(QTcpSocket *inSocket, QString Login, QWidget *parent) :
     ui(new Ui::Lobby)
 {
     ui->setupUi(this);
-
     socket = inSocket;
     login = Login;
-    ui->Nickname->setText(login);
 
+    ui->Nickname->setText(login);
+    signal();
+}
+
+void Lobby::signal()
+{
     connect(ui->Stat_game,SIGNAL(clicked()),this,SLOT(statGame()));
     connect(ui->Refresh_lobby,SIGNAL(clicked()),this,SLOT(refreshLobby()));
     connect(ui->Delete_lobby,SIGNAL(clicked()),this,SLOT(deleteLobby()));
@@ -26,9 +30,10 @@ Lobby::Lobby(QTcpSocket *inSocket, QString Login, QWidget *parent) :
 
 void Lobby::receiveLobby()
 {
-    Data = socket->readAll();
+    QByteArray Data = socket->readAll();
     qDebug() << Data;
-    doc = QJsonDocument::fromJson(Data, &docError);
+    QJsonParseError docError;
+    QJsonDocument doc = QJsonDocument::fromJson(Data, &docError);
 
     if (docError.errorString() == "no error occurred")
     {
@@ -45,17 +50,24 @@ void Lobby::receiveLobby()
         //Stat
         if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStatGame"))
         {
+            listStat.clear();
+            QJsonArray JsonlistStat = doc.object().value("userScore").toArray();
             QStandardItemModel *model = new QStandardItemModel(nullptr);
             model->setHorizontalHeaderLabels(QStringList()<<"Победитель"<<"Проигравший"<<"Счёт");
-            QJsonArray docAr = doc.object().value("userScore").toArray();
-            for (int i=0; i<docAr.count(); i++)
+
+            for (int i=0; i<JsonlistStat.count(); i++)
+            {
+                listStat.append(new mStat(JsonlistStat[i].toObject().value("winner").toString(),JsonlistStat[i].toObject().value("loser").toString(),JsonlistStat[i].toObject().value("score").toString().toInt()));
+            }
+            for (int i=0; i<listStat.count(); i++)
             {
                 QList<QStandardItem *> items;
-                QStandardItem *winner = new QStandardItem(docAr[i].toObject().value("winner").toString());
+                QStandardItem *winner = new QStandardItem(listStat[i]->winner);
                 items.append(winner);
-                QStandardItem *loser = new QStandardItem(docAr[i].toObject().value("loser").toString());
+                QStandardItem *loser = new QStandardItem(listStat[i]->loser);
                 items.append(loser);
-                QStandardItem *score = new QStandardItem(docAr[i].toObject().value("score").toString());
+                QStandardItem *score = new QStandardItem(listStat[i]->score);
+                qDebug() << listStat[i]->score;
                 items.append(score);
                 model->appendRow(items);
             }
@@ -73,18 +85,22 @@ void Lobby::receiveLobby()
         //Get
         if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveGetLobby"))
         {
-            QJsonArray docAr = doc.object().value("lobby").toArray();
+            listLobby.clear();
+            QJsonArray JsonlistLobby = doc.object().value("lobby").toArray();
             QStandardItemModel *model = new QStandardItemModel(nullptr);
 
-            model->setHorizontalHeaderLabels(QStringList()<<"Id"<<"Название"<<"Создатель");
-            for (int i=0; i<docAr.count(); i++)
+            model->setHorizontalHeaderLabels(QStringList()<<"Название"<<"Создатель");
+            for (int i=0; i<JsonlistLobby.count(); i++)
+            {
+                listLobby.append(new mLobby(JsonlistLobby[i].toObject().value("id").toString().toLongLong(),JsonlistLobby[i].toObject().value("name").toString(),JsonlistLobby[i].toObject().value("owner").toString()));
+            }
+
+            for (int i=0; i<listLobby.count(); i++)
             {
                 QList<QStandardItem *> items;
-                QStandardItem *id = new QStandardItem(docAr[i].toObject().value("id").toString());
-                items.append(id);
-                QStandardItem *name = new QStandardItem(docAr[i].toObject().value("name").toString());
+                QStandardItem *name = new QStandardItem(listLobby[i]->name);
                 items.append(name);
-                QStandardItem *owner = new QStandardItem(docAr[i].toObject().value("owner").toString());
+                QStandardItem *owner = new QStandardItem(listLobby[i]->owner);
                 items.append(owner);
                 model->appendRow(items);
             }
@@ -112,11 +128,10 @@ void Lobby::startGame()
 
     if (id_number != -1)
     {
-        QJsonArray docAr = doc.object().value("lobby").toArray();
-        std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+        std::string id = std::to_string(listLobby[id_number]->id);
 
         char request[100];
-        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"startGame\",\"id\":\""+id+"\"}\r\n\r\n";
+        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"startGame\",\"id\":\""+id+"\"}\r\n";
         strcpy(request,request2.c_str());
         socket->write(request);
         socket->waitForBytesWritten(50);
@@ -130,10 +145,10 @@ void Lobby::startGame()
 void Lobby::statGame()
 {
     char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"getStatGame\",\"login\":\""+login.toStdString()+"\"}\r\n\r\n";
+    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"getStatGame\",\"login\":\""+login.toStdString()+"\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
-    socket->waitForBytesWritten(50); 
+    socket->waitForBytesWritten(50);
 }
 
 void Lobby::deleteLobby()
@@ -142,9 +157,8 @@ void Lobby::deleteLobby()
 
     if (id_number != -1)
     {
-        QJsonArray docAr = doc.object().value("lobby").toArray();
-        QString name = docAr[id_number].toObject().value("name").toString();
-        std::string id = +docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+        QString name = listLobby[id_number]->name;
+        std::string id = std::to_string(listLobby[id_number]->id);
 
         disconnect(socket,SIGNAL(readyRead()),this,SLOT(receiveLobby()));
         socket->waitForDisconnected(50);
@@ -164,11 +178,10 @@ void Lobby::exitLobby()
 
     if (id_number != -1)
     {
-        QJsonArray docAr = doc.object().value("lobby").toArray();
-        std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+        std::string id = std::to_string(listLobby[id_number]->id);
 
         char request[100];
-        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"exitLobby\",\"id\":\""+id+"\"}\r\n\r\n";
+        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"exitLobby\",\"id\":\""+id+"\"}\r\n";
         strcpy(request,request2.c_str());
         socket->write(request);
         socket->waitForBytesWritten(50);
@@ -194,11 +207,10 @@ void Lobby::enterLobby()
 
     if (id_number != -1)
     {
-        QJsonArray docAr = doc.object().value("lobby").toArray();
-        std::string id = docAr[id_number].toObject().value("id").toString().toUtf8().constData();
+        std::string id = std::to_string(listLobby[id_number]->id);
 
         char request[100];
-        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"enterLobby\",\"id\":\""+id+"\"}\r\n\r\n";
+        std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"enterLobby\",\"id\":\""+id+"\"}\r\n";
         strcpy(request,request2.c_str());
         socket->write(request);
         socket->waitForBytesWritten(50);
@@ -212,7 +224,7 @@ void Lobby::enterLobby()
 void Lobby::refreshLobby()
 {
     char request[100];
-    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"getLobby\"}\r\n\r\n";
+    std::string request2 = "{\"globalType\":\"lobby\",\"type\":\"getLobby\"}\r\n";
     strcpy(request,request2.c_str());
     socket->write(request);
     socket->waitForBytesWritten(50);
@@ -220,15 +232,20 @@ void Lobby::refreshLobby()
 
 void Lobby::exit()
 {
+    disconnect(socket,SIGNAL(readyRead()),this,SLOT(receiveLobby()));
+    socket->waitForDisconnected(50);
+    Authorization *openAuth = new Authorization(socket);
     this->hide();
+    openAuth->show();
 }
 
 void Lobby::sockDisc()
 {
-    socket->deleteLater();
+    socket->disconnect();
 }
 
 Lobby::~Lobby()
 {
+    sockDisc();
     delete ui;
 }
