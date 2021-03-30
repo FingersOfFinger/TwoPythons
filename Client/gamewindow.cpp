@@ -14,12 +14,8 @@ GameWindow::GameWindow(QTcpSocket *inSocket, QString Login)
     drowElements();
 
     connect(socket,SIGNAL(readyRead()),this,SLOT(sockConnect()));
+    connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisc()));
     connect(buttExit, SIGNAL(clicked(bool)), this, SLOT(closeGame()));
-
-    char request[100];
-    std::string request2="{\"globalType\":\"connection\",\"type\":\"test\"}\r\n";
-    strcpy(request,request2.c_str());
-    socket->write(request);
 
     repaint();
 }
@@ -46,7 +42,6 @@ void GameWindow::keyPressEvent(QKeyEvent *event)
     strcpy(str,strCallback.c_str());
     socket->write(str);
 }
-
 
 void GameWindow::paintEvent(QPaintEvent *event)
 {
@@ -187,11 +182,17 @@ void GameWindow::closeGame()
     msg.setButtonText(QMessageBox::No, tr("Нет"));
     if (msg.exec() == QMessageBox::Yes)
     {
+        char request[100];
+        std::string request2 = "{\"globalType\":\"game\",\"type\":\"closeGame\"}\r\n";
+        strcpy(request,request2.c_str());
+        socket->write(request);
+        socket->waitForBytesWritten(50);
+
         disconnect(socket,SIGNAL(readyRead()),this,SLOT(sockConnect()));
         socket->waitForDisconnected(50);
-        Lobby *closeLobby = new Lobby(socket,login);
+        Lobby *openLobby = new Lobby(socket,login);
         this->hide();
-        closeLobby->show();
+        openLobby->show();
     }
 }
 

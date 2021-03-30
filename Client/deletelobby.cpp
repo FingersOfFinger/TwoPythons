@@ -64,9 +64,9 @@ void DeleteLobby::closeWindow()
 {
     disconnect(socket,SIGNAL(readyRead()),this,SLOT(checkCorrectInput()));
     socket->waitForDisconnected(50);
-    Lobby *closeLobby = new Lobby(socket,login);
+    Lobby *openLobby = new Lobby(socket,login);
     this->hide();
-    closeLobby->show();
+    openLobby->show();
 }
 
 void DeleteLobby::sockDisc()

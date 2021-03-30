@@ -65,7 +65,6 @@ public:
 
 private:
     Ui::Lobby *ui;
-
     QString login;
     QTcpSocket *socket;
     QVector<mLobby*> listLobby;

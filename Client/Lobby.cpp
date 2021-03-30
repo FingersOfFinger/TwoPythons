@@ -38,7 +38,7 @@ void Lobby::receiveLobby()
     if (docError.errorString() == "no error occurred")
     {
         //Start
-        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStartLobby"))
+        if ((doc.object().value("globalType").toString() == "lobby") && (doc.object().value("type").toString() == "receiveStartGame"))
         {
             disconnect(socket,SIGNAL(readyRead()),this,SLOT(receiveLobby()));
             socket->waitForDisconnected(50);
@@ -125,7 +125,6 @@ void Lobby::receiveLobby()
 void Lobby::startGame()
 {
     int id_number = ui->tableView->selectionModel()->currentIndex().row();
-
     if (id_number != -1)
     {
         std::string id = std::to_string(listLobby[id_number]->id);
@@ -140,6 +139,9 @@ void Lobby::startGame()
     {
         QMessageBox::critical(this,"Информация","Лобби не выделено!");
     }
+    QMessageBox::information(this, "Информация",login+" Готов к игре!");
+    QByteArray Data = socket->readAll();
+    qDebug() << Data;
 }
 
 void Lobby::statGame()
@@ -190,6 +192,8 @@ void Lobby::exitLobby()
     {
         QMessageBox::critical(this,"Информация","Лобби не выделено!");
     }
+    QByteArray Data = socket->readAll();
+    qDebug() << Data;
 }
 
 void Lobby::createLobby()
@@ -219,6 +223,8 @@ void Lobby::enterLobby()
     {
         QMessageBox::critical(this,"Информация","Лобби не выделено!");
     }
+    QByteArray Data = socket->readAll();
+    qDebug() << Data;
 }
 
 void Lobby::refreshLobby()
@@ -228,6 +234,8 @@ void Lobby::refreshLobby()
     strcpy(request,request2.c_str());
     socket->write(request);
     socket->waitForBytesWritten(50);
+    QString Data = QString(socket->readLine()).trimmed();
+    qDebug() << Data;
 }
 
 void Lobby::exit()
