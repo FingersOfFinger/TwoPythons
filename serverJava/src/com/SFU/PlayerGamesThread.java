@@ -27,12 +27,11 @@ public class PlayerGamesThread extends Thread{
                     python.setDirection((String) json.get("directionPython"));
                     break;
                 case ("closeGame"):
+                    this.interrupt();
                     System.out.println("close");
                     ServerClientGameThread.stopTimer(Server.getPort(socket.getRemoteSocketAddress()));
                     ServerClientLobbyThread sct=new ServerClientLobbyThread(socket);
                     sct.start();
-                    ServerClientLobbyThread sct2=new ServerClientLobbyThread(ServerClientGameThread.hashEnemy.get(socket));
-                    sct2.start();
                     break;
             }
         }
