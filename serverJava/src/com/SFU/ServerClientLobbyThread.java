@@ -11,10 +11,15 @@ import java.util.Vector;
 public class ServerClientLobbyThread extends Thread{
     public Socket socket;
     public BufferedReader in;
-    private final String login;
-    private final JSONObject json;
+    private String login;
+    private JSONObject json;
     private final DbHandler dbHandler = DbHandler.getInstance();
     ServerClientLobbyThread(Socket inSocket,JSONObject inJson,String inLogin){socket=inSocket;json=inJson;login=inLogin;}
+
+    ServerClientLobbyThread(Socket inSocket) {
+        socket=inSocket;
+    }
+
     private void pars(String word) throws ParseException, IOException {
 
         Object obj = new JSONParser().parse(word);

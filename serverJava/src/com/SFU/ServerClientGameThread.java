@@ -13,6 +13,7 @@ public class ServerClientGameThread extends Thread {
     public Vector<Point> fruits = new Vector<>();
     private static final HashMap<Integer, Timer> hashTimers = new HashMap<>();
     private static final HashMap<Integer, Timer> hashTimersPrepare = new HashMap<>();
+    public static HashMap<Socket,Socket>hashEnemy=new HashMap<>();
     public Vector<Socket> sockets;
     private String login;
     public Vector<Python> pythons = new Vector<>();
@@ -35,6 +36,8 @@ public class ServerClientGameThread extends Thread {
             hashTimersPrepare.put(Server.getPort(socket.getRemoteSocketAddress()), timerPreparation);
 
         }
+        hashEnemy.put(sockets.get(0),sockets.get(1));
+        hashEnemy.put(sockets.get(1),sockets.get(0));
         //hashTimers.put(Server.getPort(socketTwo.getRemoteSocketAddress(),timer));
     }
 
