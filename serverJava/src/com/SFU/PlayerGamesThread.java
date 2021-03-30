@@ -27,6 +27,7 @@ public class PlayerGamesThread extends Thread{
                     python.setDirection((String) json.get("directionPython"));
                     break;
                 case ("closeGame"):
+                    System.out.println("close");
                     ServerClientGameThread.stopTimer(Server.getPort(socket.getRemoteSocketAddress()));
                     ServerClientLobbyThread sct=new ServerClientLobbyThread(socket);
                     sct.start();
@@ -54,7 +55,7 @@ public class PlayerGamesThread extends Thread{
 
             }
         } catch (Exception e) {
-           
+
             ServerClientGameThread.stopTimer(Server.getPort(socket.getRemoteSocketAddress()));
             System.out.println(e);
         }
