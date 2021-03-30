@@ -94,6 +94,7 @@ public class ServerClientLobbyThread extends Thread{
         SendCallBack.sendCallbackStatGames(dbHandler.getStatGame(login),socket);
     }
     public void run() {
+        System.out.println("test");
         try {
             String word;
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
