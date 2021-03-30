@@ -66,19 +66,21 @@ public class ServerClientLobbyThread extends Thread{
         SendCallBack.sendCallbackExitLobby(LobbyManager.exitLobby(id, Server.getPort(socket.getRemoteSocketAddress())),socket);
 
     }
-    private void startGame(Long id){
+    private void startGame(Long id) throws IOException {
         LobbyManager.enterLobbyReady(id,Server.getPort(socket.getRemoteSocketAddress()));
         System.out.println(LobbyManager.checkStartLobby(id));
+        this.interrupt();
         if(LobbyManager.checkStartLobby(id)){
-            Socket socket1;
-            Socket socket2;
+            Vector<Socket>sockets=new Vector<>();
             Vector<Integer> Sockets=LobbyManager.getSockets(id);
-            socket1=Server.mapSockets.get(Sockets.get(0));
-            socket2=Server.mapSockets.get(Sockets.get(1));
+            sockets.add(Server.mapSockets.get(Sockets.get(0)));
+            sockets.add(Server.mapSockets.get(Sockets.get(1)));
+            SendCallBack.SendCallbackStartGame(sockets);
             System.out.println(Sockets.get(0));
             System.out.println(Sockets.get(1));
             LobbyManager.deleteLobbyNoLogin(id);
-            //старт игры
+            ServerClientGameThread gameThread = new ServerClientGameThread(sockets);
+            gameThread.start();
 
         }
 

@@ -33,29 +33,6 @@ public class ServerClientAuthorizationThread extends Thread {
                 case ("registration"):
                     registration(json);
                     break;
-                case("test"):
-
-                    Server.testSockets.add(socket);
-                    this.interrupt();
-                    if(Server.testSockets.size()==2) {
-
-
-                        ServerClientGameThread gameThread = new ServerClientGameThread(Server.testSockets);
-                        gameThread.start();
-
-
-                    }
-
-
-                    /**
-                    Vector<Socket>testSockets=new Vector<>();
-                    testSockets.add(socket);
-                    ServerClientGameThread gameThread=new ServerClientGameThread(testSockets);
-                    gameThread.start();
-                    this.interrupt();
-                     }*/
-
-                    break;
             }
         } else {
             if (((String) json.get("globalType")).equals("lobby")) {

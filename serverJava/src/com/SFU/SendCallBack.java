@@ -108,5 +108,13 @@ public class SendCallBack {
         out.flush();
 
     }
+    public static void SendCallbackStartGame(Vector<Socket>sockets) throws IOException {
+        for(int i=0;i<sockets.size();i++){
+            out = new BufferedWriter(new OutputStreamWriter(sockets.get(i).getOutputStream()));
+            out.write("{\"globalType\":\"lobby\",\"type\":\"receiveStartGame\"");
+            out.flush();
+
+        }
+    }
 
 }
