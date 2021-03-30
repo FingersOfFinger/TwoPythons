@@ -74,10 +74,10 @@ public class LobbyManager {
         }
         return false;
     }
-    public static void enterLobbyReady(long idLobby, int idUser){
+    public static boolean enterLobbyReady(long idLobby, int idUser){
         for (int i = 0; i < Server.allLobby.size(); i++){
             if (!Server.allLobby.get(i).idPreparation.contains(idUser)){
-                return;
+                return false;
             }
 
         }
@@ -86,10 +86,14 @@ public class LobbyManager {
             //что в низу не протестировано!
             if (Server.allLobby.get(i).id == idLobby){
                 if(!Server.allLobby.get(i).idReady.contains(idUser)){
+
                     Server.allLobby.get(i).idReady.add(idUser);
+                    return true;
+
                 }
             }
         }
+        return false;
     }
     public static Vector<Integer> getSockets(long idLobby){
         Vector<Integer>Sockets=new Vector<>();

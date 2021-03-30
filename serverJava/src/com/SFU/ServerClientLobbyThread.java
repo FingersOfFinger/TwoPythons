@@ -72,9 +72,11 @@ public class ServerClientLobbyThread extends Thread{
 
     }
     private void startGame(Long id) throws IOException {
-        LobbyManager.enterLobbyReady(id,Server.getPort(socket.getRemoteSocketAddress()));
+        if(LobbyManager.enterLobbyReady(id,Server.getPort(socket.getRemoteSocketAddress()))){
+            this.interrupt();
+        }
         System.out.println(LobbyManager.checkStartLobby(id));
-        this.interrupt();
+
         if(LobbyManager.checkStartLobby(id)){
             Vector<Socket>sockets=new Vector<>();
             Vector<Integer> Sockets=LobbyManager.getSockets(id);
